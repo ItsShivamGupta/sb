@@ -1,0 +1,100 @@
+.tm-sc-working .icon {
+  display: inline-block;
+}
+.tm-sc-working .icon,
+.tm-sc-working .working-title,
+.tm-sc-working .working-details {
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+@keyframes rotateX {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+.animation__rotateX {
+  animation: rotateX 30s linear infinite;
+}
+
+.tm-sc-working .working-block-style4 {
+  margin-bottom: 60px;
+}
+.tm-sc-working .working-block-style4 .inner-box {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: all 300ms ease;
+}
+.tm-sc-working .working-block-style4 .inner-box:hover {
+  background-color: var(--theme-color1);
+}
+.tm-sc-working .working-block-style4 .inner-box:hover .content-box .working-count {
+  background-color: var(--theme-color2);
+  border-color: transparent;
+  color: var(--theme-color1);
+}
+.tm-sc-working .working-block-style4 .inner-box:hover .content-box .working-title {
+  color: var(--theme-color2);
+}
+.tm-sc-working .working-block-style4 .inner-box:hover .content-box .working-details .item {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--theme-color2);
+  border-color: transparent;
+}
+.tm-sc-working .working-block-style4 .inner-box:hover .shape-image1 img {
+  animation: rotateX 30s linear infinite;
+}
+.tm-sc-working .working-block-style4 .inner-box .content-box {
+  position: relative;
+  padding: 62px 40px;
+  transition: all 300ms ease;
+}
+.tm-sc-working .working-block-style4 .inner-box .content-box .working-count {
+  position: absolute;
+  right: 30px;
+  top: -30px;
+  background: #37334b;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  font-size: 36px;
+  line-height: 1;
+  padding: 9px 25px 13px;
+  color: #fff;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  transition: all 300ms ease;
+}
+.tm-sc-working .working-block-style4 .inner-box .content-box .working-title {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+.tm-sc-working .working-block-style4 .inner-box .content-box .working-details {
+  position: relative;
+}
+.tm-sc-working .working-block-style4 .inner-box .content-box .working-details .item {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: #fff;
+  display: inline-block;
+  font-weight: 400;
+  padding: 9px 35px;
+  margin-bottom: 15px;
+  transition: all 300ms ease;
+}
+.tm-sc-working .working-block-style4 .inner-box .shape-image1 {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  display: flex;
+}
+@media (max-width: 1199.98px) {
+  .tm-sc-working .working-block-style4 .inner-box .shape-image1 {
+    display: none;
+  }
+}

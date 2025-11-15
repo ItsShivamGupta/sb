@@ -1,0 +1,97 @@
+.tm-sc-projects .cat-list {
+  list-style: none;
+  margin: 0;
+}
+.tm-sc-projects .cat-list li {
+  display: inline;
+  color: #aaa;
+  margin-right: 7px;
+  font-size: 13px;
+}
+.tm-sc-projects .cat-list li a {
+  color: #aaa;
+  text-transform: capitalize;
+  transition: all 0.3s ease-in-out;
+}
+.tm-sc-projects .cat-list li:last-child span {
+  display: none;
+}
+
+.projects-current-theme7 {
+  position: relative;
+}
+.projects-current-theme7 .inner-box {
+  position: relative;
+}
+.projects-current-theme7 .inner-box:hover .image-box .image img {
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  opacity: 0.4;
+}
+.projects-current-theme7 .inner-box:hover .info-box {
+  opacity: 1;
+  visibility: visible;
+  bottom: 20px;
+}
+.projects-current-theme7 .image-box {
+  position: relative;
+  transition: all 300ms ease;
+}
+.projects-current-theme7 .image-box .image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 0;
+  background-color: var(--theme-color2);
+}
+.projects-current-theme7 .image-box .image img {
+  width: 100%;
+  transition: all 300ms ease;
+}
+.projects-current-theme7 .info-box {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  padding: 25px 30px;
+  min-width: 270px;
+  transition: all 300ms ease;
+  border-radius: 0 10px 10px 0;
+  background-color: #ffffff;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+}
+.projects-current-theme7 .info-box .cat-list li {
+  font-size: 16px;
+  color: #6a6a6a;
+}
+.projects-current-theme7 .info-box .title {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.projects-current-theme7 .info-box .title:hover {
+  color: var(--theme-color1);
+}
+.projects-current-theme7 .read-more {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 20px;
+  top: -26px;
+  height: 52px;
+  width: 52px;
+  font-size: 18px;
+  color: var(--theme-color1-text-color);
+  background-color: var(--theme-color1);
+  border-radius: 50%;
+  transition: all 300ms ease;
+  z-index: 3;
+}
+.projects-current-theme7 .read-more:hover {
+  color: var(--theme-color2-text-color);
+  background-color: var(--theme-color2);
+  transition: all 300ms ease;
+}

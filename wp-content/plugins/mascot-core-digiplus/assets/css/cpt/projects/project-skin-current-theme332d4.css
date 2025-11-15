@@ -1,0 +1,99 @@
+.tm-sc-projects .cat-list {
+  list-style: none;
+  margin: 0;
+}
+.tm-sc-projects .cat-list li {
+  display: inline;
+  color: #aaa;
+  margin-right: 7px;
+  font-size: 13px;
+}
+.tm-sc-projects .cat-list li a {
+  color: #aaa;
+  text-transform: capitalize;
+  transition: all 0.3s ease-in-out;
+}
+.tm-sc-projects .cat-list li:last-child span {
+  display: none;
+}
+
+.projects-current-theme3 .inner-box {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.projects-current-theme3 .inner-box:hover .image-box::after {
+  transform: scaleY(0);
+}
+.projects-current-theme3 .inner-box:hover .image-box::before {
+  transform: scaleY(1);
+}
+.projects-current-theme3 .inner-box .image-box {
+  position: relative;
+  margin-bottom: 0;
+}
+.projects-current-theme3 .inner-box .image-box::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  transform: scaleY(1);
+  transform-origin: bottom;
+  background-image: linear-gradient(transparent, var(--theme-color2));
+  transition: all 300ms ease;
+}
+.projects-current-theme3 .inner-box .image-box::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  transform: scaleY(0);
+  transform-origin: bottom;
+  background-image: linear-gradient(transparent, var(--theme-color1));
+  transition: all 300ms ease;
+}
+.projects-current-theme3 .inner-box .image-box img {
+  display: inline-block;
+  height: auto;
+  transition: all 300ms ease;
+  object-fit: cover;
+  width: 100%;
+}
+.projects-current-theme3 .inner-box .content-inner {
+  position: absolute;
+  padding: 35px 35px 23px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  content: "";
+}
+.projects-current-theme3 .inner-box .content-inner .title {
+  max-width: 230px;
+  color: #fff;
+}
+.projects-current-theme3 .inner-box .content-inner .title a:hover, .projects-current-theme3 .inner-box .content-inner .title a:focus {
+  color: #fff;
+}
+.projects-current-theme3 .inner-box .content-inner .link-btn {
+  display: none;
+}
+.projects-current-theme3 .inner-box .content-inner .link-btn .link {
+  width: 37px;
+  height: 37px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 50%;
+  display: inline-block;
+  transform: rotate(-45deg);
+  color: var(--theme-color2-text-color);
+  background-color: var(--theme-color2);
+  transition: all 300ms ease;
+}
+.projects-current-theme3 .inner-box .content-inner .link-btn .link:hover {
+  transform: rotate(0deg);
+}

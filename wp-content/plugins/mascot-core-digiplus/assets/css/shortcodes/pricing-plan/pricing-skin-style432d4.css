@@ -1,0 +1,205 @@
+.pricing-plan-skin-style4 {
+  transition: all 0.3s ease;
+}
+.pricing-plan-skin-style4.pricing-active .pricing-plan-inner-wrapper {
+  border-color: var(--theme-color1);
+  background-color: var(--theme-color1);
+}
+.pricing-plan-skin-style4 .pricing-plan-inner-wrapper {
+  overflow: hidden;
+  background: #fff;
+  position: relative;
+  padding: 40px;
+  border-radius: 10px;
+  border: 1px solid #d4d0e4;
+  -webkit-box-shadow: 0 10px 60px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 60px rgba(0, 0, 0, 0.06);
+}
+[data-tm-layout=dark] .pricing-plan-skin-style4 .pricing-plan-inner-wrapper {
+  background-color: #1a1b1d;
+  border: 1px solid #3d3b44;
+}
+.pricing-plan-skin-style4 .pricing-plan-inner-wrapper:hover {
+  border-color: var(--theme-color1);
+}
+.pricing-plan-skin-style4 .pricing-plan-inner-wrapper:before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  right: 3px;
+  bottom: 3px;
+  background-image: url(../../../images/current-theme/mask-style1.png);
+  background-position: right top;
+  background-size: cover;
+  border-radius: 15px;
+}
+[data-tm-layout=dark] .pricing-plan-skin-style4 .pricing-plan-inner-wrapper:before {
+  filter: invert(1);
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .pricing-plan-head .pricing-plan-thumb {
+  position: absolute;
+  right: 25px;
+  top: 55px;
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .pricing-plan-head .pricing-plan-thumb .icon {
+  position: relative;
+  display: block;
+  font-size: 54px;
+  line-height: 1em;
+  background: linear-gradient(to left, var(--theme-color1), var(--theme-color1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .pricing-plan-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 1;
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .price {
+  position: relative;
+  display: flex;
+  font-size: 65px;
+  line-height: 1;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: var(--headings-color);
+  align-items: flex-end;
+  font-family: var(--heading-font-family);
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .price .pricing-plan-prefix {
+  font-size: 24px;
+  top: -35px;
+  position: relative;
+  line-height: 1;
+  font-weight: 700;
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .price .pricing-plan-price {
+  margin-left: 10px;
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .price .pricing-plan-separator {
+  margin-right: 5px;
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .price .pricing-plan-postfix,
+.pricing-plan-skin-style4 .pricing-plan-inner .price .pricing-plan-separator {
+  position: relative;
+  display: block;
+  top: -5px;
+  font-size: 14px;
+  line-height: 1em;
+  color: #6a6f78;
+  font-weight: normal;
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .pricing-plan-subtitle {
+  margin-top: 0;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e8eaf1;
+  padding-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+[data-tm-layout=dark] .pricing-plan-skin-style4 .pricing-plan-inner .pricing-plan-subtitle {
+  border-color: #3d3b44;
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .pricing-plan-content {
+  margin-bottom: 25px;
+  margin-top: 20px;
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .pricing-plan-content .features-list {
+  position: relative;
+  margin-bottom: 35px;
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .pricing-plan-content .features-list li {
+  position: relative;
+  display: block;
+  padding-left: 35px;
+  padding-top: 0;
+  line-height: 28px;
+  color: #2e2d2d;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+[data-tm-layout=dark] .pricing-plan-skin-style4 .pricing-plan-inner .pricing-plan-content .features-list li {
+  color: #fff;
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .pricing-plan-content .features-list li:before {
+  position: absolute;
+  left: 4px;
+  top: 6px;
+  height: 16px;
+  width: 16px;
+  line-height: 1;
+  display: flex;
+  text-align: center;
+  background: var(--theme-color2);
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 900;
+  font-size: 8px;
+  content: "\f00c";
+  font-family: "Font Awesome 5 Free";
+  justify-content: center;
+  align-items: center;
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .pricing-plan-content .features-list li.no-action {
+  color: #999;
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .pricing-plan-content .features-list li.no-action:before {
+  color: #999;
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .pricing-plan-content .features-list li.line-through {
+  color: #999;
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .pricing-plan-content .features-list li.line-through:before {
+  color: #999;
+  background: linear-gradient(to left, #ddd, #ddd);
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .pricing-plan-content .features-list li.line-through:after {
+  position: absolute;
+  left: -20px;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background-color: #999;
+  content: "";
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .pricing-plan-content .features-list li i,
+.pricing-plan-skin-style4 .pricing-plan-inner .pricing-plan-content .features-list li svg {
+  margin-right: 8px;
+  font-size: 11px;
+  color: #111;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .pricing-plan-content .features-list li svg {
+  width: 16px;
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .pricing-plan-label {
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: var(--theme-color2);
+  position: absolute;
+  right: 10px;
+  top: 18px;
+  transition: all 0.3s ease;
+}
+[data-tm-layout=dark] .pricing-plan-skin-style4 .pricing-plan-inner .pricing-plan-label {
+  color: #fff;
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .btn-view-details a {
+  z-index: 1;
+  position: relative;
+}
+.pricing-plan-skin-style4 .pricing-plan-inner .btn-view-details a:before {
+  z-index: -1;
+}
+.pricing-plan-skin-style4:hover .pricing-plan-thumb.has-thumb-hover .thumb {
+  display: none;
+}
+.pricing-plan-skin-style4:hover .pricing-plan-thumb.has-thumb-hover .thumb-hover {
+  display: block;
+}

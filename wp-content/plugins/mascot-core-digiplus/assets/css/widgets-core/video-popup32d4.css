@@ -1,0 +1,381 @@
+/*
+ * video-popup.scss
+ * -----------------------------------------------
+*/
+.nivo-lightbox-theme-default .nivo-lightbox-close {
+  background-position: 0 0;
+  width: 45px !important;
+  height: 45px !important;
+}
+
+/* Individual effect = play-video-button */
+.tm-sc-video-popup {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* Text Holder */
+}
+.tm-sc-video-popup .hover-link {
+  z-index: 8;
+}
+.tm-sc-video-popup .thumb {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+.tm-sc-video-popup:hover .thumb {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+.tm-sc-video-popup .text-holder {
+  opacity: 1;
+}
+.tm-sc-video-popup .text-holder-middle {
+  top: 50%;
+  margin-top: -36px;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+.tm-sc-video-popup:hover .text-holder-middle {
+  top: 50%;
+  -webkit-transform: scale(1.07);
+  -moz-transform: scale(1.07);
+  -ms-transform: scale(1.07);
+  transform: scale(1.07);
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image {
+  overflow: hidden;
+  border-radius: 10px;
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image:before {
+  position: absolute;
+  content: "";
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 8;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image .effect-wrapper {
+  height: 400px;
+  display: block;
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image .effect-wrapper .thumb {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: top center;
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image .video-button-holder {
+  opacity: 0.8;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image .video-button-text {
+  color: #fff;
+  font-size: 1.5rem;
+  position: absolute;
+  bottom: 12%;
+  z-index: 8;
+  text-align: center;
+  width: 100%;
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image .animated-css-play-button {
+  z-index: 9;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 8;
+  opacity: 1;
+  color: #fff;
+  font-size: 16px;
+  transition: all 0.3s ease 0s;
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image .animated-css-play-button .bg-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--theme-color1-text-color);
+  background-color: rgba(var(--theme-color1-rgb), 0.7);
+  z-index: -1;
+  border-radius: 100%;
+  transition: all 0.3s ease 0s;
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image .animated-css-play-button .play-icon,
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image .animated-css-play-button .play-icon:before,
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image .animated-css-play-button .play-icon:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
+  -moz-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
+  -ms-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
+  -o-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
+  -webkit-animation: videoplayanimation 3s infinite;
+  -moz-animation: videoplayanimation 3s infinite;
+  -ms-animation: videoplayanimation 3s infinite;
+  -o-animation: videoplayanimation 3s infinite;
+  animation: videoplayanimation 3s infinite;
+  transition: all 0.3s ease 0s;
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image .animated-css-play-button .play-icon:before {
+  -webkit-animation-delay: 0.9s;
+  -moz-animation-delay: 0.9s;
+  -ms-animation-delay: 0.9s;
+  -o-animation-delay: 0.9s;
+  animation-delay: 0.9s;
+  content: "";
+  position: absolute;
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image .animated-css-play-button .play-icon:after {
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  -ms-animation-delay: 0.6s;
+  -o-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+  content: "";
+  position: absolute;
+}
+@-webkit-keyframes videoplayanimation {
+  60% {
+    box-shadow: 0 0 0 60px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+@keyframes videoplayanimation {
+  60% {
+    box-shadow: 0 0 0 60px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image .animated-css-play-button i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  color: #fff;
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image:hover .animated-css-play-button {
+  background: rgba(255, 51, 51, 0.9);
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image:hover .video-button-holder {
+  opacity: 0.95;
+  top: 50%;
+  left: 50%;
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image2 {
+  overflow: hidden;
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image2:before {
+  position: absolute;
+  content: "";
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 8;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image2 .effect-wrapper {
+  height: 400px;
+  display: block;
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image2 .effect-wrapper .thumb {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image2 .video-button-holder {
+  opacity: 0.8;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image2 .video-button-text {
+  color: #fff;
+  font-size: 1.5rem;
+  position: absolute;
+  bottom: 12%;
+  z-index: 8;
+  text-align: center;
+  width: 100%;
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image2 .video-play-button {
+  font-size: 14px;
+  height: 36px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  line-height: 35px;
+  margin: 0 auto;
+  position: absolute;
+  width: 35px;
+  z-index: 9;
+  text-align: center;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image2 .video-play-button .bg-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--theme-color1-text-color);
+  background-color: var(--theme-color1);
+  z-index: -1;
+  transition: all 0.3s ease 0s;
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image2:hover:before {
+  position: absolute;
+  content: "";
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 8;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.tm-sc-video-popup.tm-sc-video-popup-button-over-image2:hover .video-button-holder {
+  opacity: 0.95;
+  top: 50%;
+  left: 50%;
+}
+.tm-sc-video-popup.tm-sc-video-popup-css-button {
+  display: inline-block;
+}
+.tm-sc-video-popup.tm-sc-video-popup-css-button .animated-css-play-button {
+  position: relative;
+  z-index: 0;
+}
+.tm-sc-video-popup.tm-sc-video-popup-css-button .animated-css-play-button i {
+  font-size: 30px;
+  color: #fff;
+}
+.tm-sc-video-popup.tm-sc-video-popup-css-button .animated-css-play-button .bg-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  color: var(--theme-color1-text-color);
+  background-color: rgba(var(--theme-color1-rgb), 0.7);
+  z-index: -1;
+  border-radius: 100%;
+  margin: 40px;
+  transition: all 0.3s ease 0s;
+}
+.tm-sc-video-popup.tm-sc-video-popup-css-button .animated-css-play-button .play-icon {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 8;
+  opacity: 1;
+  margin: 40px;
+  color: #fff;
+  font-size: 16px;
+  transition: all 0.4s ease 0s;
+}
+.tm-sc-video-popup.tm-sc-video-popup-css-button .animated-css-play-button .play-icon i {
+  transition: all 0.3s ease 0s;
+}
+.tm-sc-video-popup.tm-sc-video-popup-css-button .animated-css-play-button .play-icon:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  border-radius: 100%;
+  z-index: -1;
+  opacity: 0.3;
+  width: 110px;
+  height: 110px;
+  transition: all 0.4s ease 0s;
+}
+.tm-sc-video-popup.tm-sc-video-popup-css-button .animated-css-play-button .play-icon:after {
+  content: " ";
+  background-color: rgba(var(--theme-color1-rgb), 0.3);
+  display: block;
+  position: absolute;
+  border-radius: 100%;
+  z-index: -1;
+  transition: all 0.4s ease 0s;
+  animation: video-play-button-animate 1.2s ease-in infinite forwards;
+}
+.tm-sc-video-popup.tm-sc-video-popup-css-button:hover .animated-css-play-button .play-icon:after {
+  background-color: rgba(var(--theme-color1-rgb), 0.94);
+}
+.tm-sc-video-popup.tm-sc-video-popup-custom-css-button .video-play-button {
+  background: var(--theme-color1);
+  color: var(--theme-color1-text-color);
+  width: 110px;
+  height: 110px;
+  font-size: 26px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tm-sc-video-popup.tm-sc-video-popup-custom-css-button .video-play-button:hover {
+  background: var(--theme-color2);
+  color: var(--theme-color2-text-color);
+  transform: scale(0.9);
+}
+
+@keyframes video-play-button-animate {
+  0% {
+    width: 10px;
+    height: 10px;
+    opacity: 0.8;
+  }
+  100% {
+    width: 160px;
+    height: 160px;
+    opacity: 0;
+  }
+}
