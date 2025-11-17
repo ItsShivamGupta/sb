@@ -8766,3 +8766,77 @@ $grid-breakpoints: (
     font-size: 3rem;
   }
 }
+
+
+/* Responsive embed/video helper - supports 16:9 and 16:12 (4:3) reliably */
+
+/* Generic responsive video container */
+.tm-responsive-video {
+  position: relative;
+  width: 100%;
+  /* prefer modern aspect-ratio */
+  aspect-ratio: 16 / 9; /* default aspect */
+  min-height: 0;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Make any iframe/object/embed fill the container */
+.tm-responsive-video > iframe,
+.tm-responsive-video > object,
+.tm-responsive-video > embed,
+.tm-responsive-video > video {
+  position: absolute;
+  inset: 0;              /* top:0; right:0; bottom:0; left:0 */
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Specific WP embed wrappers — keep existing selectors for compatibility */
+.wp-block-embed .tm-responsive-video,
+.wp-block-embed.wp-embed-aspect-16-9 .tm-responsive-video,
+.wp-block-embed.wp-embed-aspect-16-12 .tm-responsive-video,
+.wp-block-embed-wordpress-tv .tm-responsive-video {
+  /* nothing extra here; rules above apply */
+}
+
+/* If markup uses class .wp-embed-aspect-16-9 -> set 16:9 explicitly */
+.wp-block-embed.wp-embed-aspect-16-9 .tm-responsive-video,
+.wp-block-embed-wordpress-tv.wp-embed-aspect-16-9 .tm-responsive-video {
+  aspect-ratio: 16 / 9;
+}
+
+/* If markup uses class .wp-embed-aspect-16-12 -> set 4:3 (same as 16:12) */
+.wp-block-embed.wp-embed-aspect-16-12 .tm-responsive-video,
+.wp-block-embed-wordpress-tv.wp-embed-aspect-16-12 .tm-responsive-video {
+  aspect-ratio: 16 / 12; /* 16:12 equals 4:3 */
+}
+
+/* ===== Fallback for browsers that DO NOT support aspect-ratio ===== */
+@supports not (aspect-ratio: 1/1) {
+  .tm-responsive-video {
+    height: 0;                  /* collapse so padding-top defines height */
+    padding: 0;
+  }
+  /* Default 16:9 fallback */
+  .tm-responsive-video { padding-top: 56.25%; } /* 9 / 16 */
+
+  /* Specific fallbacks for markup classes */
+  .wp-block-embed.wp-embed-aspect-16-9 .tm-responsive-video,
+  .wp-block-embed-wordpress-tv.wp-embed-aspect-16-9 .tm-responsive-video {
+    padding-top: 56.25%; /* 9 / 16 */
+  }
+  .wp-block-embed.wp-embed-aspect-16-12 .tm-responsive-video,
+  .wp-block-embed-wordpress-tv.wp-embed-aspect-16-12 .tm-responsive-video {
+    padding-top: 75%; /* 12 / 16 */
+  }
+}
+
+/* Small-screen tweaks: ensure no overflow/visual cropping */
+@media (max-width: 640px) {
+  .tm-responsive-video { /* slightly reduce min visual height on tiny screens */
+    aspect-ratio: calc(var(--video-ratio, 16 / 9));
+  }
+}
+
