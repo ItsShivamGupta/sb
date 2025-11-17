@@ -7703,15 +7703,15 @@ figcaption, .wp-caption-text {
   height: 100%;
 }
 
-.wp-block-embed-wordpress-tv.wp-block-embed.wp-embed-aspect-16-9 .wp-block-embed__wrapper .tm-responsive-video {
+.wp-block-embed-wordpress-tv.wp-block-embed.wp-embed-aspect-16-12 .wp-block-embed__wrapper .tm-responsive-video {
   width: 100%;
   position: relative;
   padding: 0;
   padding-top: 56.25%;
 }
-.wp-block-embed-wordpress-tv.wp-block-embed.wp-embed-aspect-16-9 .wp-block-embed__wrapper .tm-responsive-video > iframe,
-.wp-block-embed-wordpress-tv.wp-block-embed.wp-embed-aspect-16-9 .wp-block-embed__wrapper .tm-responsive-video > object,
-.wp-block-embed-wordpress-tv.wp-block-embed.wp-embed-aspect-16-9 .wp-block-embed__wrapper .tm-responsive-video > embed {
+.wp-block-embed-wordpress-tv.wp-block-embed.wp-embed-aspect-16-12 .wp-block-embed__wrapper .tm-responsive-video > iframe,
+.wp-block-embed-wordpress-tv.wp-block-embed.wp-embed-aspect-16-12 .wp-block-embed__wrapper .tm-responsive-video > object,
+.wp-block-embed-wordpress-tv.wp-block-embed.wp-embed-aspect-16-12 .wp-block-embed__wrapper .tm-responsive-video > embed {
   position: absolute;
   top: 0;
   left: 0;
