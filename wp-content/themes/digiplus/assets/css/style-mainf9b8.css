@@ -553,23 +553,22 @@ ul {
   right: 0;
   width: 30px;
 }
-/* -------- Scroll To Top ---------- */
+/* =========================================
+   1. SCROLL TO TOP BUTTON (Force Position)
+   ========================================= */
 .scroll-to-top {
-  display: none;
+  display: none; /* Toggled by JS */
 }
 
 .scroll-to-top a {
+  /* Force position away from edges */
+  bottom: 30px !important;
+  right: 30px !important; 
+  
+  width: 40px !important;
+  height: 40px !important;
   background-size: 200% auto;
   box-shadow: 0 7px 30px rgba(0, 0, 0, 0.3);
-  
-  /* Tighter Positioning */
-  bottom: 15px; 
-  right: 15px;  
-  
-  /* Smaller Compact Size */
-  width: 40px;
-  height: 40px;
-  
   border-radius: 50%;
   padding: 2px;
   position: fixed;
@@ -585,7 +584,7 @@ ul {
 
 .scroll-to-top a i {
   color: var(--theme-color1-text-color);
-  font-size: 20px; /* Reduced icon size */
+  font-size: 20px !important;
 }
 
 .scroll-to-top a:hover {
@@ -594,130 +593,128 @@ ul {
   transform: translateY(-3px);
 }
 
-/* 📱 MOBILE RESPONSIVENESS */
+/* 📱 MOBILE: SCROLL BUTTON */
 @media (max-width: 768px) {
   .scroll-to-top a {
-    /* Ultra Compact for Mobile */
-    width: 35px;
-    height: 35px;
-    right: 10px;   /* Very close to edge */
-    bottom: 10px;
+    width: 35px !important;
+    height: 35px !important;
+    
+    /* Force Mobile Spacing */
+    right: 25px !important; 
+    bottom: 25px !important;
   }
 
   .scroll-to-top a i {
-    font-size: 16px;
+    font-size: 16px !important;
   }
 }
 
+/* =========================================
+   2. FLOATING CONTACT ICONS (Force Position)
+   ========================================= */
+.floating-contact-wrapper {
+  position: fixed;
+  
+  /* Desktop: Pushed higher and further left */
+  bottom: 85px !important; 
+  right: 30px !important;
+  
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  z-index: 9999;
+  pointer-events: none; /* Lets clicks pass through wrapper */
+}
 
-/* -------- Floating Contact Button ---------- */
+.contact-toggle {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #fbc14c, #f59e0b);
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(159, 58, 0, 0.25);
+  margin-top: 10px;
+  transition: transform 0.3s ease, background 0.3s ease;
+  pointer-events: auto; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 4px;
+}
+
+.contact-toggle:hover {
+  transform: rotate(90deg) scale(1.1);
+}
+
+.contact-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto; 
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.contact-icons.hide {
+  opacity: 0;
+  transform: translateY(20px) scale(0.9);
+  pointer-events: none;
+}
+
+.contact-icon {
+  width: 40px !important;
+  height: 40px !important;
+  background: linear-gradient(180deg, #fbc14c, #f5880b);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 12px rgba(159, 58, 0, 0.25);
+  text-decoration: none; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-icon:hover {
+  transform: scale(1.15);
+  box-shadow: 0 8px 16px rgba(159, 58, 0, 0.25);
+}
+
+.contact-icon img {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+/* 📱 MOBILE: CONTACT ICONS */
+@media (max-width: 768px) {
   .floating-contact-wrapper {
-    position: fixed;
-    /* Calculated: Scroll Bottom (15px) + Scroll Height (40px) + Gap (10px) = 65px */
-    bottom: 65px; 
-    right: 35px;  /* Aligned with Scroll Button */
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    z-index: 9999;
-    pointer-events: none; 
+      /* Mobile: Pushed higher and further left */
+      right: 25px !important; 
+      bottom: 70px !important; 
   }
 
   .contact-toggle {
-    /* Matching Scroll Button Size */
-    width: 40px;
-    height: 40px;
-    
-    border-radius: 50%;
-    background: linear-gradient(180deg, #fbc14c, #f59e0b);
-    color: #fff;
-    font-size: 24px; /* Slightly smaller font */
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 6px 12px rgba(159, 58, 0, 0.25);
-    margin-top: 10px;
-    transition: transform 0.3s ease, background 0.3s ease;
-    pointer-events: auto; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 4px;
-  }
-
-  .contact-toggle:hover {
-    transform: rotate(90deg) scale(1.1);
-  }
-
-  .contact-icons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px; /* Tighter gap */
-    margin-bottom: 8px;
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    pointer-events: auto; 
-    transition: opacity 0.4s ease, transform 0.4s ease;
-  }
-
-  .contact-icons.hide {
-    opacity: 0;
-    transform: translateY(20px) scale(0.9);
-    pointer-events: none;
+      width: 35px !important;
+      height: 35px !important;
+      font-size: 20px !important;
   }
 
   .contact-icon {
-    /* Matching Toggle Size */
-    width: 40px;
-    height: 40px;
-    
-    background: linear-gradient(180deg, #fbc14c, #f5880b);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 6px 12px rgba(159, 58, 0, 0.25);
-    text-decoration: none; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .contact-icon:hover {
-    transform: scale(1.15);
-    box-shadow: 0 8px 16px rgba(159, 58, 0, 0.25);
+      width: 35px !important;
+      height: 35px !important;
   }
 
   .contact-icon img {
-    width: 18px; /* Smaller icons */
-    height: 18px;
+      width: 16px !important;
+      height: 16px !important;
   }
-
-  /* 📱 MOBILE RESPONSIVENESS */
-  @media (max-width: 768px) {
-    .floating-contact-wrapper {
-        right: 10px; 
-        /* Calculated: Scroll Bottom (10px) + Scroll Height (35px) + Gap (10px) = 55px */
-        bottom: 55px; 
-    }
-
-    .contact-toggle {
-        width: 35px;
-        height: 35px;
-        font-size: 20px;
-    }
-
-    .contact-icon {
-        width: 35px;
-        height: 35px;
-    }
-
-    .contact-icon img {
-        width: 16px;
-        height: 16px;
-    }
-  }
-
-
+}
 
 
 /* table */
