@@ -9069,3 +9069,14 @@ $grid-breakpoints: (
 
 
 
+/* Mobile Override */
+@media screen and (max-width: 768px) {
+  /* Replace '.container' with the actual class name of your main wrapper */
+  html, body, .container, #root {
+    aspect-ratio: auto !important;   /* Disables the fixed ratio */
+    width: 100% !important;          /* Ensures full width */
+    height: auto !important;         /* Allows height to grow with content */
+    min-height: 100dvh !important;   /* Forces it to be at least full screen height */
+    overflow-y: auto !important;     /* Enables vertical scrolling if content is too tall */
+  }
+}
