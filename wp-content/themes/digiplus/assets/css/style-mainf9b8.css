@@ -1272,162 +1272,215 @@ body:not(.elementor-editor-active).tm-header-sticky-mobile header #elementor-hea
   font-family: "Font Awesome 5 Free";
 }
 
-/* 14 - MOBILE MODE (RESPONSIVE MODE)
-======================================*/
-@media (min-width: 1025px) {
-  header#header.header .top-primary-nav-clone-parent {
-    display: none !important;
-  }
-}
+/* 1. FORCE FULL WIDTH CONTAINER */
 @media (max-width: 1024px) {
-  /* Responsive menu container */
-  .menuzord-responsive.menuzord {
-    padding: 0;
-  }
-  header#header.header .nav-side-icon-parent {
-    display: none;
-  }
-  /* Brand */
-  .menuzord-responsive .menuzord-brand {
-    margin: 8px 30px 10px 20px;
-    font-size: 20px;
-    line-height: 1.55;
-  }
-  .elementor-element .menuzord-responsive .showhide {
-    margin-right: 5px;
-  }
-  /* Menu */
-  .menuzord-responsive .menuzord-menu {
-    width: 100%;
-    float: left !important;
-    margin-top: 5px;
-    padding: 0;
-    display: none;
-  }
-  .elementor-element .menuzord-responsive .menuzord-menu {
-    padding: 0 5px 5px;
-    display: block;
-  }
-  /* scrollable menu*/
-  .menuzord-responsive .menuzord-menu.scrollable {
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .menuzord-responsive .menuzord-menu.scrollable > .scrollable-fix {
-    display: block;
-  }
-  /* Menu items */
-  .menuzord-responsive .menuzord-menu > li {
-    width: 100%;
-    display: block;
-    position: relative;
-  }
-  .menuzord-responsive .menuzord-menu > li > a {
-    width: 100%;
-    padding: 12px 20px;
-    display: block;
-    border-bottom: solid 1px var(--mobile-menu-item-link-bg-border-color);
-  }
-  .menuzord-responsive .menuzord-menu > li:first-child > a {
-    border-top: solid 1px var(--mobile-menu-item-link-bg-border-color);
-  }
-  /* Dropdown */
-  .menuzord-responsive .menuzord-menu ul.dropdown,
-.menuzord-responsive .menuzord-menu ul.dropdown li ul.dropdown {
-    width: 100%;
-    left: 0;
-    position: static;
-    border: none;
-    background: var(--theme-color-white);
-    float: left;
-  }
-  /* Dropdown items */
-  .menuzord-responsive .menuzord-menu ul.dropdown li {
-    position: relative;
-  }
-  .menuzord-responsive .menuzord-menu ul.dropdown li a {
-    border-bottom: solid 1px #f0f0f0;
-  }
-  .menuzord-responsive .menuzord-menu.menuzord-indented > li > ul.dropdown > li > a {
-    padding-left: 30px !important;
-  }
-  .menuzord-responsive .menuzord-menu.menuzord-indented > li > ul.dropdown > li > ul.dropdown > li > a {
-    padding-left: 50px !important;
-  }
-  .menuzord-responsive .menuzord-menu.menuzord-indented > li > ul.dropdown > li > ul.dropdown > li > ul.dropdown > li > a {
-    padding-left: 70px !important;
-  }
-  /* Dropdown/megamenu indicators */
-  .menuzord-responsive .menuzord-menu li .indicator {
-    width: 27px;
-    height: 27px;
-    position: absolute;
-    right: 15px;
-    top: 13.5px;
-    left: auto;
-    font-size: 12px;
-    text-align: center;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--mobile-menu-item-indicator-bg-color);
-    color: var(--mobile-menu-item-indicator-text-color);
-    border-radius: 5px;
-    transform: rotate(-90deg);
-    transition: all 0.3s ease;
-  }
-  .menuzord-responsive .menuzord-menu li .indicator.active {
-    background: var(--theme-color1);
-    color: var(--theme-color1-text-color);
-    transform: rotate(0deg);
-  }
-  .menuzord-responsive .menuzord-menu li ul.dropdown li .indicator {
-    transform: rotate(0);
-  }
-  .menuzord-responsive .menuzord-menu li ul.dropdown li .indicator.active {
-    transform: rotate(90deg);
-  }
-  /* Megamenu */
-  .menuzord-responsive .menuzord-menu .megamenu .megamenu-row {
-    display: block;
-  }
-  .menuzord-responsive .menuzord-menu > li > .megamenu {
-    width: 100% !important;
-    left: 0 !important;
-    position: static;
-    border-top: none;
-    border-bottom: solid 1px #f0f0f0;
-  }
-  .menuzord-responsive .menuzord-menu > li > .megamenu .megamenu-row [class*=col] {
-    float: none;
-    display: block;
-    width: 100% !important;
-    margin-left: 0;
-    margin-top: 15px;
-  }
-  /* Search field */
-  .menuzord-responsive .menuzord-menu > li.search form {
-    width: 100%;
-    margin: 4px 0;
-    padding: 10px 16px !important;
-  }
-  .menuzord-responsive .menuzord-menu > li.search form input[type=text] {
-    width: 100%;
-  }
-  /* Tabs */
-  .menuzord-responsive .menuzord-tabs-nav {
-    width: 100%;
-  }
-  .menuzord-responsive .menuzord-tabs-content {
-    width: 100%;
-  }
+    /* Override the default sidebar width to be 100% of the screen */
+    .tm-header-menu {
+        width: 100% !important;
+        max-width: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 100vh !important;
+        background: #ffffff !important; /* Solid premium white background */
+        padding: 40px 30px !important;
+        box-sizing: border-box;
+        transform: translateX(100%); /* Default hidden state */
+        transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1) !important;
+    }
+
+    /* When menu is active (check your theme's active class, usually added to body or this element) */
+    .tm-header-menu.tm-menu-open, 
+    body.tm-menu-open .tm-header-menu {
+        transform: translateX(0) !important;
+    }
+
+    /* 2. CONTAINER LAYOUT */
+    .tm-header-menu-scroll {
+        display: flex !important;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-between; /* Pushes menu up and other content down */
+    }
+
+    /* 3. LOGO */
+    .tm-header-menu .elementor-widget-tm-ele-site-logo {
+        margin-bottom: 40px !important;
+        display: block !important;
+    }
+    .tm-header-menu .elementor-widget-tm-ele-site-logo img {
+        max-width: 240px !important; /* Adjust logo size */
+    }
+
+    /* 4. THE MENU (BIG TEXT) */
+    .menuzord-responsive .menuzord-menu {
+        display: flex !important;
+        flex-direction: column !important;
+        float: none !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: transparent !important;
+    }
+
+    .menuzord-responsive .menuzord-menu > li {
+        display: block !important;
+        width: 100% !important;
+        border: none !important; /* Remove default borders */
+        margin-bottom: 15px !important;
+    }
+
+    .menuzord-responsive .menuzord-menu > li > a {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Or your theme font */
+        font-size: 36px !important; /* BIG TEXT */
+        font-weight: 700 !important;
+        line-height: 1.1 !important;
+        color: #000000 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        text-transform: capitalize !important; /* Clean look */
+        letter-spacing: -0.5px;
+    }
+
+    /* Active/Hover State for Menu Items */
+    .menuzord-responsive .menuzord-menu > li > a:hover,
+    .menuzord-responsive .menuzord-menu > li.active > a {
+        color: #f6a611 !important; /* Your brand color */
+        padding-left: 10px !important; /* Subtle shift on hover */
+        transition: all 0.3s ease;
+    }
+
+    /* 5. HIDE DEFAULT INDICATORS (The arrows) */
+    .menuzord-responsive .menuzord-menu li .indicator {
+        display: none !important; /* Hides the default small arrows for a cleaner look */
+    }
+    
+    /* 6. DROPDOWNS (If you have submenus) */
+    .menuzord-responsive .menuzord-menu ul.dropdown {
+        position: relative !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding-left: 0 !important;
+        margin-top: 10px !important;
+    }
+    .menuzord-responsive .menuzord-menu ul.dropdown li a {
+        font-size: 18px !important; /* Smaller text for sub-items */
+        color: #666 !important;
+        font-weight: 500 !important;
+        padding: 5px 0 !important;
+        border: none !important;
+    }
+
+    /* 7. CLOSE BUTTON */
+    .tm-menu-close {
+        position: absolute !important;
+        top: 30px !important;
+        right: 30px !important;
+        width: 40px !important;
+        height: 40px !important;
+        background: #f5f5f5 !important;
+        border-radius: 50% !important;
+        color: #000 !important;
+        opacity: 1 !important;
+        z-index: 9999 !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* 8. PUSHING CONTENT TO BOTTOM (Socials) */
+    /* If you have other widgets below the menu in Elementor, this ensures they sit at the bottom */
+    .elementor-3003 .elementor-element {
+        width: 100% !important;
+    }
 }
-@media (max-width: 767.98px) {
-  header#header .header-nav .header-nav-container .top-primary-nav-clone-parent .menuzord-menu {
-    padding-bottom: 10px;
-  }
+
+
+/* ===========================================================
+   3. NEW FOOTER HTML STYLING ("About/Contact" Section)
+   =========================================================== */
+@media (max-width: 1024px) {
+    .sb-mobile-sidebar-footer {
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 1px solid rgba(0,0,0,0.05);
+        animation: fadeIn 0.8s ease;
+    }
+
+    .sb-widget { margin-bottom: 30px; }
+
+    .sb-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .sb-desc {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    /* "Get a Quote" Button */
+    .sb-cta-btn {
+        display: inline-block;
+        background: #f6a611;
+        color: #fff;
+        padding: 12px 25px;
+        border-radius: 30px; /* Rounded pill */
+        font-weight: 600;
+        font-size: 13px;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+    .sb-cta-btn:hover { background: #000; color: #fff; }
+    .sb-cta-btn .arrow { margin-left: 8px; }
+
+    /* Contact List */
+    .sb-contact-list { list-style: none; padding: 0; margin: 0; }
+    .sb-contact-list li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        font-size: 14px;
+        color: #333;
+        font-weight: 500;
+    }
+    .sb-contact-list li a { color: #333; text-decoration: none; }
+    .sb-contact-list li .icon { margin-right: 12px; font-size: 16px; }
+
+    /* Social Icons */
+    .sb-socials { display: flex; gap: 10px; }
+    .sb-soc-link {
+        width: 36px; height: 36px;
+        background: #f6a611;
+        color: #fff;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
+    }
 }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Social Icons - FIXED MARGIN */
+    .sb-socials { 
+        display: flex; 
+        gap: 10px;
+        padding-bottom: 100px !important; /* <--- ADDED SPACE AT BOTTOM */
+    }
+
+
+
 /*
  * header-other.scss
  * -----------------------------------------------
@@ -7703,15 +7756,15 @@ figcaption, .wp-caption-text {
   height: 100%;
 }
 
-.wp-block-embed-wordpress-tv.wp-block-embed.wp-embed-aspect-16-12 .wp-block-embed__wrapper .tm-responsive-video {
+.wp-block-embed-wordpress-tv.wp-block-embed.wp-embed-aspect-16-9 .wp-block-embed__wrapper .tm-responsive-video {
   width: 100%;
   position: relative;
   padding: 0;
   padding-top: 56.25%;
 }
-.wp-block-embed-wordpress-tv.wp-block-embed.wp-embed-aspect-16-12 .wp-block-embed__wrapper .tm-responsive-video > iframe,
-.wp-block-embed-wordpress-tv.wp-block-embed.wp-embed-aspect-16-12 .wp-block-embed__wrapper .tm-responsive-video > object,
-.wp-block-embed-wordpress-tv.wp-block-embed.wp-embed-aspect-16-12 .wp-block-embed__wrapper .tm-responsive-video > embed {
+.wp-block-embed-wordpress-tv.wp-block-embed.wp-embed-aspect-16-9 .wp-block-embed__wrapper .tm-responsive-video > iframe,
+.wp-block-embed-wordpress-tv.wp-block-embed.wp-embed-aspect-16-9 .wp-block-embed__wrapper .tm-responsive-video > object,
+.wp-block-embed-wordpress-tv.wp-block-embed.wp-embed-aspect-16-9 .wp-block-embed__wrapper .tm-responsive-video > embed {
   position: absolute;
   top: 0;
   left: 0;
@@ -8768,75 +8821,9 @@ $grid-breakpoints: (
 }
 
 
-/* Responsive embed/video helper - supports 16:9 and 16:12 (4:3) reliably */
 
-/* Generic responsive video container */
-.tm-responsive-video {
-  position: relative;
-  width: 100%;
-  /* prefer modern aspect-ratio */
-  aspect-ratio: 16 / 9; /* default aspect */
-  min-height: 0;
-  overflow: hidden;
-  background: transparent;
-}
 
-/* Make any iframe/object/embed fill the container */
-.tm-responsive-video > iframe,
-.tm-responsive-video > object,
-.tm-responsive-video > embed,
-.tm-responsive-video > video {
-  position: absolute;
-  inset: 0;              /* top:0; right:0; bottom:0; left:0 */
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
 
-/* Specific WP embed wrappers — keep existing selectors for compatibility */
-.wp-block-embed .tm-responsive-video,
-.wp-block-embed.wp-embed-aspect-16-9 .tm-responsive-video,
-.wp-block-embed.wp-embed-aspect-16-12 .tm-responsive-video,
-.wp-block-embed-wordpress-tv .tm-responsive-video {
-  /* nothing extra here; rules above apply */
-}
 
-/* If markup uses class .wp-embed-aspect-16-9 -> set 16:9 explicitly */
-.wp-block-embed.wp-embed-aspect-16-9 .tm-responsive-video,
-.wp-block-embed-wordpress-tv.wp-embed-aspect-16-9 .tm-responsive-video {
-  aspect-ratio: 16 / 9;
-}
 
-/* If markup uses class .wp-embed-aspect-16-12 -> set 4:3 (same as 16:12) */
-.wp-block-embed.wp-embed-aspect-16-12 .tm-responsive-video,
-.wp-block-embed-wordpress-tv.wp-embed-aspect-16-12 .tm-responsive-video {
-  aspect-ratio: 16 / 12; /* 16:12 equals 4:3 */
-}
-
-/* ===== Fallback for browsers that DO NOT support aspect-ratio ===== */
-@supports not (aspect-ratio: 1/1) {
-  .tm-responsive-video {
-    height: 0;                  /* collapse so padding-top defines height */
-    padding: 0;
-  }
-  /* Default 16:9 fallback */
-  .tm-responsive-video { padding-top: 56.25%; } /* 9 / 16 */
-
-  /* Specific fallbacks for markup classes */
-  .wp-block-embed.wp-embed-aspect-16-9 .tm-responsive-video,
-  .wp-block-embed-wordpress-tv.wp-embed-aspect-16-9 .tm-responsive-video {
-    padding-top: 56.25%; /* 9 / 16 */
-  }
-  .wp-block-embed.wp-embed-aspect-16-12 .tm-responsive-video,
-  .wp-block-embed-wordpress-tv.wp-embed-aspect-16-12 .tm-responsive-video {
-    padding-top: 75%; /* 12 / 16 */
-  }
-}
-
-/* Small-screen tweaks: ensure no overflow/visual cropping */
-@media (max-width: 640px) {
-  .tm-responsive-video { /* slightly reduce min visual height on tiny screens */
-    aspect-ratio: calc(var(--video-ratio, 16 / 9));
-  }
-}
 
