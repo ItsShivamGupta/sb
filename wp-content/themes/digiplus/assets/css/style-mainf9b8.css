@@ -18,6 +18,8 @@ This file contains the common styles of this theme.
   --theme-color-silver: #eee;
   --theme-color-dark: #333;
   --theme-color-dark2: #222;
+  --tm-container-pt: 120px;
+  --tm-container-pb: 120px;
   --body-font-family: "DM Sans", sans-serif;
   --heading-font-family: "Outfit", sans-serif;
   --body-font-size: 1rem;
@@ -551,22 +553,23 @@ ul {
   right: 0;
   width: 30px;
 }
-/* =========================================
-   1. SCROLL TO TOP BUTTON (Force Position)
-   ========================================= */
+/* -------- Scroll To Top ---------- */
 .scroll-to-top {
-  display: none; /* Toggled by JS */
+  display: none;
 }
 
 .scroll-to-top a {
-  /* Force position away from edges */
-  bottom: 30px !important;
-  right: 30px !important; 
-  
-  width: 40px !important;
-  height: 40px !important;
   background-size: 200% auto;
   box-shadow: 0 7px 30px rgba(0, 0, 0, 0.3);
+  
+  /* Tighter Positioning */
+  bottom: 15px; 
+  right: 15px;  
+  
+  /* Smaller Compact Size */
+  width: 40px;
+  height: 40px;
+  
   border-radius: 50%;
   padding: 2px;
   position: fixed;
@@ -582,7 +585,7 @@ ul {
 
 .scroll-to-top a i {
   color: var(--theme-color1-text-color);
-  font-size: 20px !important;
+  font-size: 20px; /* Reduced icon size */
 }
 
 .scroll-to-top a:hover {
@@ -591,126 +594,18 @@ ul {
   transform: translateY(-3px);
 }
 
-/* 📱 MOBILE: SCROLL BUTTON */
+/* 📱 MOBILE RESPONSIVENESS */
 @media (max-width: 768px) {
   .scroll-to-top a {
-    width: 35px !important;
-    height: 35px !important;
-    
-    /* Force Mobile Spacing */
-    right: 25px !important; 
-    bottom: 25px !important;
+    /* Ultra Compact for Mobile */
+    width: 35px;
+    height: 35px;
+    right: 10px;   /* Very close to edge */
+    bottom: 10px;
   }
 
   .scroll-to-top a i {
-    font-size: 16px !important;
-  }
-}
-
-/* =========================================
-   2. FLOATING CONTACT ICONS (Force Position)
-   ========================================= */
-.floating-contact-wrapper {
-  position: fixed;
-  
-  /* Desktop: Pushed higher and further left */
-  bottom: 85px !important; 
-  right: 30px !important;
-  
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  z-index: 9999;
-  pointer-events: none; /* Lets clicks pass through wrapper */
-}
-
-.contact-toggle {
-  width: 40px !important;
-  height: 40px !important;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #fbc14c, #f59e0b);
-  color: #fff;
-  font-size: 24px;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 6px 12px rgba(159, 58, 0, 0.25);
-  margin-top: 10px;
-  transition: transform 0.3s ease, background 0.3s ease;
-  pointer-events: auto; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 4px;
-}
-
-.contact-toggle:hover {
-  transform: rotate(90deg) scale(1.1);
-}
-
-.contact-icons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: auto; 
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.contact-icons.hide {
-  opacity: 0;
-  transform: translateY(20px) scale(0.9);
-  pointer-events: none;
-}
-
-.contact-icon {
-  width: 40px !important;
-  height: 40px !important;
-  background: linear-gradient(180deg, #fbc14c, #f5880b);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 12px rgba(159, 58, 0, 0.25);
-  text-decoration: none; 
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.contact-icon:hover {
-  transform: scale(1.15);
-  box-shadow: 0 8px 16px rgba(159, 58, 0, 0.25);
-}
-
-.contact-icon img {
-  width: 18px !important;
-  height: 18px !important;
-}
-
-/* 📱 MOBILE: CONTACT ICONS */
-@media (max-width: 768px) {
-  .floating-contact-wrapper {
-      /* Mobile: Pushed higher and further left */
-      right: 25px !important; 
-      bottom: 70px !important; 
-  }
-
-  .contact-toggle {
-      width: 35px !important;
-      height: 35px !important;
-      font-size: 20px !important;
-  }
-
-  .contact-icon {
-      width: 35px !important;
-      height: 35px !important;
-  }
-
-  .contact-icon img {
-      width: 16px !important;
-      height: 16px !important;
+    font-size: 16px;
   }
 }
 
@@ -1036,6 +931,17 @@ section > .container-fluid {
   padding-bottom: 0;
 }
 
+body .main-content-area,
+body .sidebar-area {
+  padding-top: var(--tm-container-pt);
+  padding-bottom: var(--tm-container-pb);
+}
+
+body .main-content-area,
+body .sidebar-area {
+  padding-top: var(--tm-container-pt);
+  padding-bottom: var(--tm-container-pb);
+}
 @media (max-width: 991.98px) {
   body .sidebar-area {
     padding-top: 0;
@@ -9055,71 +8961,4 @@ $grid-breakpoints: (
 
 
 
-/* ======================================================
-   MOBILE FULL SCREEN FIX (Targeting Digiplus Theme)
-   ====================================================== */
-@media screen and (max-width: 768px) {
 
-    /* 1. KILL THE THEME PADDING (Crucial Step) */
-    :root {
-        --tm-container-pt: 0px !important;
-        --tm-container-pb: 0px !important;
-    }
-
-    /* 2. Reset Body and HTML */
-    html, body {
-        height: 100% !important;
-        width: 100% !important;
-        margin: 0 !important;
-        overflow-x: hidden !important;
-        background-color: #020617 !important; /* Match your dark bg */
-    }
-
-    /* 3. Target the specific wrappers found in your CSS file */
-    #wrapper, 
-    .main-content-area, 
-    .main-content, 
-    .page-content,
-    .entry-content {
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-        margin: 0 !important;
-        min-height: 100vh !important;
-        min-height: 100dvh !important; /* Dynamic viewport height */
-        width: 100% !important;
-        max-width: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-    }
-
-    /* 4. Fix Elementor Containers (if using Elementor) */
-    .elementor-section, 
-    .elementor-container, 
-    .elementor-column {
-        height: 100% !important;
-        min-height: 100dvh !important;
-        padding: 0 !important;
-    }
-
-    /* 5. Force the Ripple/Logo Image to cover the screen */
-    .main-content-area img, 
-    .main-content-area canvas {
-        width: 100% !important;
-        height: 100vh !important;     /* Fallback */
-        height: 100dvh !important;    /* Actual Mobile Height */
-        object-fit: cover !important; /* Ensures no white bars */
-        object-position: center !important;
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        z-index: 0 !important;
-    }
-    
-    /* 6. Ensure Text/Logo sits on top */
-    .elementor-widget-heading, 
-    .elementor-widget-image {
-        z-index: 10 !important;
-        position: relative !important;
-    }
-}
