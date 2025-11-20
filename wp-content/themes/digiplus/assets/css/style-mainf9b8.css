@@ -9029,50 +9029,76 @@ $grid-breakpoints: (
 }
 
 
-/* ===========================================================
-   RESPONSIVENESS PATCH (By Gemini for Shivam Gupta)
-   Fixes: Windows Laptop (150% Scale) & Smartboard (300% Scale)
-   =========================================================== */
+/* ==========================================================================
+   MASTER SCALING FIX: Windows Laptops & Android Smartboards
+   Forces "67% Zoom" look on cramped high-DPI screens.
+   ========================================================================== */
 
-/* 1. SIMULATE 67% ZOOM ON LAPTOPS/SMARTBOARDS
-   Target screens between 1024px and 1440px (Common "Cramped" Range) */
-@media only screen and (min-width: 1025px) and (max-width: 1480px) {
-    
+/* 1. TARGET: Standard Laptops (13" - 15.6") with Windows Scaling
+   These screens usually report width between 1024px and 1600px. 
+   We force a 0.75 (75%) zoom to mimic the "normal" Mac look. */
+@media only screen and (min-width: 1025px) and (max-width: 1600px) {
     html {
-        /* Reduces all REM-based sizes to 85% of their original size.
-           This shrinks fonts, padding, and margins proportionally. */
-        font-size: 85% !important; 
+        /* This property works in Chrome, Edge, and Android (Smartboards) */
+        zoom: 0.75; 
     }
 
-    /* 2. PREVENT HORIZONTAL SCROLLING & TIGHT EDGES */
-    .container {
-        /* Force container to leave breathing room on sides */
-        max-width: 92% !important; 
-        width: 92% !important;
+    /* Fix for Firefox (which doesn't support 'zoom') */
+    @-moz-document url-prefix() {
+        html {
+            transform: scale(0.75);
+            transform-origin: 0 0;
+            width: 133.33%; /* Compensate for the shrink */
+            overflow-x: hidden;
+        }
     }
+}
 
-    /* 3. FIX HEADER/MENU OVERLAPPING
-       Prevents the menu from dropping to a second line or overlapping the logo */
+/* 2. TARGET: 4K Smartboards / Android Large Screens
+   If the board reports a true 4K width but uses high DPI scaling, 
+   or mimics a TV resolution (1920px). */
+@media only screen and (min-width: 1921px) and (max-width: 3840px) and (orientation: landscape) {
+    html {
+        /* Slightly less aggressive zoom for 4K screens to keep text readable */
+        zoom: 0.85; 
+    }
+}
+
+/* 3. EXCEPTION: Mac Retina Displays
+   We generally want to leave Macs alone as they handle scaling well.
+   This query attempts to reset zoom if the device pixel ratio is distinct to Apple. */
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 1400px) {
+    html {
+        zoom: 1; /* Reset to normal for high-res Macs */
+    }
+}
+
+/* ==========================================================================
+   UI PATCHES FOR SCALED LAYOUT
+   When we zoom out, some fixed elements might detach. These fix them.
+   ========================================================================== */
+
+/* Fix Floating Contact Icons position after zoom */
+@media only screen and (min-width: 1025px) {
+    .floating-contact-wrapper {
+        bottom: 60px !important; 
+        right: 20px !important;
+    }
+    
+    /* Ensure the scroll-to-top button stays clickable */
+    .scroll-to-top a {
+        bottom: 20px !important;
+        right: 20px !important;
+    }
+}
+
+/* Ensure navigation menus don't break at the new scale */
+@media only screen and (min-width: 1025px) and (max-width: 1400px) {
     .menuzord-menu > li > a {
-        padding: 10px 10px !important; /* Reduce space between menu items */
-        font-size: 0.9rem !important;  /* Slightly smaller menu text */
+        padding: 15px 12px !important; /* Tighter menu spacing */
+        font-size: 14px !important;
     }
-    
     .menuzord-brand img {
-        /* Scale down the logo slightly to save space */
-        max-width: 130px !important; 
-        width: auto !important;
-    }
-
- 
-
-/* 4. SPECIFIC FIX FOR 4K SMARTBOARDS (High DPI) 
-   If the board reports a very high resolution but high pixel density */
-@media only screen and (min-width: 1921px) and (max-width: 3840px) and (min-resolution: 2dppx) {
-    html {
-        font-size: 100% !important; /* Reset to standard */
-    }
-    .container {
-        max-width: 1600px !important; /* Allow wider layout on true 4K */
+        max-width: 180px !important; /* Prevent logo overlap */
     }
 }
