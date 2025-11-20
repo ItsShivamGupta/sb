@@ -9029,99 +9029,92 @@ $grid-breakpoints: (
 }
 
 /* ==========================================================================
-   FINAL MASTER FIX: 90% Scale + Floating Pill Menu
-   1. SCALING: Sets default zoom to 90% (Fixes layout & missing image).
-   2. HEADER: Maintains the "Floating Pill" look.
-   3. ICONS: Keeps scroll button and contact icons perfectly aligned.
+   MASTER SCALING & HEADER FIX (Updated for Shivam Gupta)
+   1. Fixes "Zoomed In" look on Windows/Android.
+   2. Slims down the header and rounded buttons to match the new scale.
    ========================================================================== */
 
-/* --- 1. GLOBAL SCALING: FORCE 90% ZOOM --- */
-/* This mimics the "90%" browser zoom where your image is visible */
+/* --- 1. GLOBAL SCALING FIX (The 67% Logic) --- */
 @media only screen and (min-width: 1025px) and (max-width: 1600px) {
     html {
-        zoom: 0.9; /* Sets default scale to 90% */
+        zoom: 0.75; /* Forces the "MacBook" look on Windows */
     }
     
-    /* Firefox Fallback (Firefox doesn't support 'zoom') */
+    /* Firefox fallback */
     @-moz-document url-prefix() {
         html {
-            transform: scale(0.9);
+            transform: scale(0.75);
             transform-origin: 0 0;
-            width: 111.111%; /* Compensates for the 90% shrink (100/0.9) */
+            width: 133.33%;
             overflow-x: hidden;
         }
     }
 }
 
-/* 4K Screen Logic */
+/* --- 2. 4K SCREEN FIX --- */
 @media only screen and (min-width: 1921px) and (max-width: 3840px) and (orientation: landscape) {
     html {
-        zoom: 0.85; /* Slightly smaller for huge screens */
+        zoom: 0.85;
     }
 }
 
-/* Mac Retina Protection */
+/* --- 3. MAC RETINA PROTECTION --- */
 @media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 1400px) {
     html {
-        zoom: 1; /* Resets zoom for Macs so they don't get too small */
+        zoom: 1; /* Keeps iMacs/MacBooks sharp */
     }
 }
 
+/* ==========================================================================
+   HEADER & MENU COMPACTING (The "Rounded Menu" Fix)
+   This section forces the big buttons and header to slim down.
+   ========================================================================== */
 
-/* --- 2. HEADER MENU: FLOATING PILL --- */
 @media only screen and (min-width: 1025px) {
     
-    /* Force the menu bar to float and wrap content */
-    header#header .header-nav-wrapper,
-    header#header .header-nav-container,
-    .navbar-scrolltofixed {
-        width: -moz-fit-content !important;
-        width: fit-content !important;
-        max-width: 95% !important;
-        
-        /* Center alignment */
-        margin-left: auto !important;
-        margin-right: auto !important;
-        left: 0 !important;
-        right: 0 !important;
-        
-        /* Pill Visuals */
-        margin-top: 20px !important;
-        background: #ffffff !important;
-        border-radius: 50px !important;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
-        position: relative !important;
-        top: 0 !important;
+    /* 1. SQUASH THE HEADER HEIGHT
+       The theme sets 20px padding on menu items. We reduce it to 5px.
+       This pulls the whole white/black bar thinner. */
+    .menuzord-menu > li {
+        padding: 5px 0 !important; 
     }
 
-    /* Sticky Scroll Fix */
-    .navbar-scrolltofixed.scroll-to-fixed-fixed {
-        position: fixed !important;
-        top: 10px !important;
-        margin-top: 0 !important;
-    }
-
-    /* Transparent Parent Background */
-    header#header .header-nav {
-        background: transparent !important;
-        box-shadow: none !important;
-        border: none !important;
-    }
-    
-    /* Menu Item Spacing */
+    /* 2. SLIM DOWN THE NAV LINKS
+       Keeps text readable but removes wasted space. */
     .menuzord-menu > li > a {
-        padding: 10px 15px !important;
+        padding: 12px 10px !important;
         font-size: 15px !important;
     }
-    
-    /* Rounded Button Styling */
-    header .btn, header .theme-btn-style-one {
-        padding: 10px 25px !important;
+
+    /* 3. FIX THE "ROUNDED MENU BAR" (Yellow Button)
+       Your theme's default buttons have huge padding (approx 24px top/bottom).
+       This forces them to be slim and proportionate to the text. */
+    header .btn, 
+    header .elementor-button,
+    .menuzord-menu .btn,
+    header .theme-btn-style-one, 
+    header .theme-btn-style-two {
+        padding: 10px 25px !important; /* Drastically reduces width/height */
+        line-height: 1.4 !important;
+        min-height: unset !important;
         font-size: 14px !important;
-        border-radius: 50px !important;
+        border-radius: 50px !important; /* Maintains the nice rounded look */
+    }
+
+    /* 4. PREVENT LOGO OVERLAP
+       Ensures the logo doesn't stay huge while the bar shrinks. */
+    .menuzord-brand img {
+        max-height: 50px !important; /* Limits vertical height */
+        width: auto !important;
+    }
+
+    /* 5. FIX FLOATING CONTACT ICONS
+       Keeps them nicely positioned in the corner. */
+    .floating-contact-wrapper {
+        bottom: 50px !important; 
+        right: 20px !important;
     }
 }
-
 
 
 /* --- 3. ICON SEPARATION FIX (No More Overlap) --- */
