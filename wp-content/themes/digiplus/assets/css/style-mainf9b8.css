@@ -9030,59 +9030,39 @@ $grid-breakpoints: (
 
 
 
-
 /* ===========================================================
-   RESPONSIVENESS PATCH (By Gemini for Shivam Gupta)
-   Fixes: Windows Laptop (150% Scale) & Smartboard (300% Scale)
+   FORCE ZOOM FIX (By Gemini for Shivam Gupta)
+   Target: Windows Laptops (13.3", 14", 15.6") & Smartboards
    =========================================================== */
 
-/* 1. SIMULATE 67% ZOOM ON LAPTOPS/SMARTBOARDS
-   Target screens between 1024px and 1440px (Common "Cramped" Range) */
-@media only screen and (min-width: 1025px) and (max-width: 1480px) {
-    
-    html {
-        /* Reduces all REM-based sizes to 85% of their original size.
-           This shrinks fonts, padding, and margins proportionally. */
-        font-size: 85% !important; 
-    }
-
-    /* 2. PREVENT HORIZONTAL SCROLLING & TIGHT EDGES */
-    .container {
-        /* Force container to leave breathing room on sides */
-        max-width: 92% !important; 
-        width: 92% !important;
-    }
-
-    /* 3. FIX HEADER/MENU OVERLAPPING
-       Prevents the menu from dropping to a second line or overlapping the logo */
-    .menuzord-menu > li > a {
-        padding: 10px 10px !important; /* Reduce space between menu items */
-        font-size: 0.9rem !important;  /* Slightly smaller menu text */
-    }
-    
-    .menuzord-brand img {
-        /* Scale down the logo slightly to save space */
-        max-width: 130px !important; 
-        width: auto !important;
-    }
-
-    /* Adjust header height if it's sticky */
-    .header-nav .header-nav-wrapper {
-        padding-top: 5px !important;
-        padding-bottom: 5px !important;
+@media only screen and (min-width: 1000px) and (max-width: 1600px) {
+    body {
+        /* This tells Chrome/Edge on Windows to literally zoom out to 80%.
+           If 80% isn't enough, change this value to 0.75 or 0.67 */
+        zoom: 0.8 !important; 
+        
+        /* Ensure the background covers the whole area after zooming */
+        min-height: 100vh;
+        width: 100%;
+        overflow-x: hidden; /* Prevents side-scrolling */
     }
 }
 
-/* 4. SPECIFIC FIX FOR 4K SMARTBOARDS (High DPI) 
-   If the board reports a very high resolution but high pixel density */
-@media only screen and (min-width: 1921px) and (max-width: 3840px) and (min-resolution: 2dppx) {
-    html {
-        font-size: 100% !important; /* Reset to standard */
-    }
-    .container {
-        max-width: 1600px !important; /* Allow wider layout on true 4K */
+/* Correction for Fixed Header when Zoom is active 
+   (Sticky headers sometimes misbehave with CSS zoom) */
+@media only screen and (min-width: 1000px) and (max-width: 1600px) {
+    header#header, 
+    .header-nav,
+    .floating-contact-wrapper, 
+    .scroll-to-top {
+        /* Ensures fixed elements stay pinned to the correct spot */
+        transform: translateZ(0); 
     }
 }
 
-
-
+/* Specific adjustment for the 13.3" screen if it feels too small */
+@media only screen and (min-width: 1000px) and (max-width: 1300px) {
+    .container {
+        max-width: 95% !important; /* Force full width usage */
+    }
+}
