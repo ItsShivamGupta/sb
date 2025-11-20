@@ -9029,89 +9029,99 @@ $grid-breakpoints: (
 }
 
 /* ==========================================================================
-   FINAL FIX: Shivam Gupta - ScaleBold
-   1. SCALING: 67% Zoom for Windows/Smartboards.
-   2. HEADER: Forces "Floating Pill" look (Centers & Rounds the Menu).
-   3. ICONS: Fixes Overlap on Mac/Windows.
+   FINAL MASTER FIX: 90% Scale + Floating Pill Menu
+   1. SCALING: Sets default zoom to 90% (Fixes layout & missing image).
+   2. HEADER: Maintains the "Floating Pill" look.
+   3. ICONS: Keeps scroll button and contact icons perfectly aligned.
    ========================================================================== */
 
-/* --- 1. LOGICAL SCREEN SCALING (The 67% Fix) --- */
+/* --- 1. GLOBAL SCALING: FORCE 90% ZOOM --- */
+/* This mimics the "90%" browser zoom where your image is visible */
 @media only screen and (min-width: 1025px) and (max-width: 1600px) {
     html {
-        zoom: 0.75; /* 75% Scale for cramped screens */
+        zoom: 0.9; /* Sets default scale to 90% */
     }
     
-    /* Firefox Support */
+    /* Firefox Fallback (Firefox doesn't support 'zoom') */
     @-moz-document url-prefix() {
         html {
-            transform: scale(0.75);
+            transform: scale(0.9);
             transform-origin: 0 0;
-            width: 133.33%;
+            width: 111.111%; /* Compensates for the 90% shrink (100/0.9) */
             overflow-x: hidden;
         }
     }
 }
 
-/* 4K Smartboard Protection */
+/* 4K Screen Logic */
 @media only screen and (min-width: 1921px) and (max-width: 3840px) and (orientation: landscape) {
     html {
-        zoom: 0.85;
+        zoom: 0.85; /* Slightly smaller for huge screens */
     }
 }
 
-/* Mac Retina Protection (Prevents tiny text on iMacs) */
+/* Mac Retina Protection */
 @media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 1400px) {
     html {
-        zoom: 1; 
+        zoom: 1; /* Resets zoom for Macs so they don't get too small */
     }
 }
 
 
-/* --- 2. THE "FLOATING PILL" MENU (High Priority) --- */
+/* --- 2. HEADER MENU: FLOATING PILL --- */
 @media only screen and (min-width: 1025px) {
     
-    /* Force the wrapper to detach from edges and become a pill */
+    /* Force the menu bar to float and wrap content */
     header#header .header-nav-wrapper,
     header#header .header-nav-container,
-    .navbar-scrolltofixed, 
-    .is-sticky .header-nav-wrapper {
+    .navbar-scrolltofixed {
+        width: -moz-fit-content !important;
+        width: fit-content !important;
+        max-width: 95% !important;
         
-        /* Size & Position constraints */
-        width: 90% !important;           /* Responsive width (never full edge-to-edge) */
-        max-width: 1200px !important;    /* Cap the maximum length */
+        /* Center alignment */
+        margin-left: auto !important;
+        margin-right: auto !important;
         left: 0 !important;
         right: 0 !important;
-        margin: 20px auto !important;    /* Center horizontally + Top gap */
         
-        /* Visuals */
-        background: #000000 !important;  /* Solid background for the pill */
-        border-radius: 50px !important;  /* Fully rounded ends */
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important; /* Depth */
-        
-        /* Override theme's default positioning */
-        position: relative !important; 
+        /* Pill Visuals */
+        margin-top: 20px !important;
+        background: #ffffff !important;
+        border-radius: 50px !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+        position: relative !important;
         top: 0 !important;
     }
 
-    /* Fix for when you scroll down (Sticky State) */
+    /* Sticky Scroll Fix */
     .navbar-scrolltofixed.scroll-to-fixed-fixed {
         position: fixed !important;
-        top: 10px !important;            /* Keep a small gap from top of screen */
+        top: 10px !important;
         margin-top: 0 !important;
     }
 
-    /* Remove background from the full-width parent strip so it looks floating */
+    /* Transparent Parent Background */
     header#header .header-nav {
         background: transparent !important;
         box-shadow: none !important;
         border: none !important;
     }
     
-    /* Squeeze the internal menu spacing */
+    /* Menu Item Spacing */
     .menuzord-menu > li > a {
-        padding: 12px 15px !important;
+        padding: 10px 15px !important;
+        font-size: 15px !important;
+    }
+    
+    /* Rounded Button Styling */
+    header .btn, header .theme-btn-style-one {
+        padding: 10px 25px !important;
+        font-size: 14px !important;
+        border-radius: 50px !important;
     }
 }
+
 
 
 /* --- 3. ICON SEPARATION FIX (No More Overlap) --- */
