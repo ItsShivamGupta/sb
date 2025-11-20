@@ -9031,61 +9031,41 @@ $grid-breakpoints: (
 
 
 /* ===========================================================
-   FINAL RESPONSIVENESS FIX (Safe for Menubar)
-   Target: Windows Laptops (1280px-1440px Viewports)
+   FINAL FIX: SPACIOUS BODY + READABLE MENU (For Shivam Gupta)
    =========================================================== */
 
-@media only screen and (min-width: 1025px) and (max-width: 1480px) {
+@media only screen and (min-width: 1025px) and (max-width: 1500px) {
     
-    /* 1. SHRINK ALL TEXT & SPACING
-       Reducing the root size scales down all 'rem' values in your theme */
+    /* 1. Relax the page content slightly (Spacious look) */
     html {
-        font-size: 13px !important; /* Default is usually 16px. This acts like 80% zoom */
+        font-size: 14.5px !important; /* Increased from 13px so it is NOT tiny */
     }
 
-    /* 2. FORCE WIDER CONTAINERS
-       The standard 1170px container is too tight for these screens.
-       We force it to 95% width so content breathes (like zooming out). */
-    .container {
-        max-width: 96% !important;
-        width: 96% !important;
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
-    /* 3. COMPACT MENU (Prevents dropping to new line) */
-    .menuzord-brand img {
-        max-width: 140px !important; /* Shrink logo slightly */
-        height: auto !important;
-    }
-    
+    /* 2. FORCE MENU TEXT TO BE BIGGER & BOLD */
     .menuzord-menu > li > a {
-        padding: 15px 10px !important; /* Reduce side padding on menu links */
-        font-size: 0.9rem !important;
+        font-size: 15px !important;     /* Force readable text size */
+        font-weight: 600 !important;    /* Make it pop against the dark background */
+        padding: 25px 12px !important;  /* comfortable spacing */
+        letter-spacing: 0.5px !important;
     }
 
-    /* 4. FIX HERO/SLIDER HEIGHTS
-       Prevent the top banner from taking up the whole laptop screen */
-    .tm-page-title, 
-    .tm-sc-section-title {
-        padding-top: 40px !important;
-        padding-bottom: 40px !important;
+    /* 3. FIX LOGO SIZE (Make it visible again) */
+    .menuzord-brand img {
+        max-width: 170px !important; 
+        width: auto !important;
+        height: auto !important;
+        margin-top: 5px !important;
     }
-    
-    h1, .h1 { font-size: 2.8rem !important; }
-    h2, .h2 { font-size: 2.2rem !important; }
-    
-    /* 5. ADJUST PADDING FOR SECTIONS */
-    /* Shrinks white space between sections */
-    body .main-content-area, 
-    body .sidebar-area {
-        padding-top: 60px !important;
-        padding-bottom: 60px !important;
-    }
-}
 
-/* Specific Fix for the 4K Smartboard (Android TV usually has high scaling) */
-@media only screen and (min-width: 1921px) and (min-resolution: 2dppx) {
-    html { font-size: 14px !important; }
-    .container { max-width: 90% !important; }
+    /* 4. PREVENT CRAMPING (Give the layout side-breathing room) */
+    .container {
+        max-width: 94% !important; 
+        width: 94% !important;
+    }
+
+    /* 5. FIX HEADER ALIGNMENT */
+    .header-nav-wrapper {
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+    }
 }
