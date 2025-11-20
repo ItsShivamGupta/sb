@@ -9031,41 +9031,62 @@ $grid-breakpoints: (
 
 
 /* ===========================================================
-   FINAL FIX: SPACIOUS BODY + READABLE MENU (For Shivam Gupta)
+   MASTER RESPONSIVENESS PATCH (Final Version)
+   Fixes: Windows Scaling & Smartboard Aspect Ratio
+   Feature: perfect layout scale + VISIBLE Menu
    =========================================================== */
 
-@media only screen and (min-width: 1025px) and (max-width: 1500px) {
-    
-    /* 1. Relax the page content slightly (Spacious look) */
+/* Target Windows Laptops (125% - 150% scale) and Smartboards */
+@media only screen and (min-width: 1025px) and (max-width: 1550px) {
+
+    /* 1. THE "ASPECT RATIO" FIX
+       This shrinks the general layout (images, spacing, huge text) 
+       to mimic the 67% zoom you liked. */
     html {
-        font-size: 14.5px !important; /* Increased from 13px so it is NOT tiny */
+        font-size: 85% !important; 
     }
 
-    /* 2. FORCE MENU TEXT TO BE BIGGER & BOLD */
-    .menuzord-menu > li > a {
-        font-size: 15px !important;     /* Force readable text size */
-        font-weight: 600 !important;    /* Make it pop against the dark background */
-        padding: 25px 12px !important;  /* comfortable spacing */
-        letter-spacing: 0.5px !important;
-    }
-
-    /* 3. FIX LOGO SIZE (Make it visible again) */
-    .menuzord-brand img {
-        max-width: 170px !important; 
-        width: auto !important;
-        height: auto !important;
-        margin-top: 5px !important;
-    }
-
-    /* 4. PREVENT CRAMPING (Give the layout side-breathing room) */
+    /* 2. CONTAINER BREATHING ROOM
+       Prevents the "ugly" cramped look by using more screen width. */
     .container {
-        max-width: 94% !important; 
-        width: 94% !important;
+        max-width: 95% !important;
+        width: 95% !important;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
-    /* 5. FIX HEADER ALIGNMENT */
+    /* 3. THE MENU RESTORATION (Critical Fix)
+       We explicitly force the menu text back to PIXELS (px).
+       This overrides the 85% scaling so the menu stays big and readable. */
+    .menuzord-menu > li > a {
+        font-size: 15px !important;     /* Fixed size, readable on all screens */
+        font-weight: 700 !important;    /* Bold to make it pop */
+        padding: 28px 12px !important;  /* Adjust padding to vertically center it */
+        line-height: 1 !important;      /* Prevent weird vertical gaps */
+        white-space: nowrap !important; /* Forces menu items to stay on one line */
+    }
+
+    /* Force the menu container to be visible */
+    .menuzord-menu {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        height: auto !important;
+    }
+
+    /* 4. LOGO BALANCE
+       Slightly adjust logo so it doesn't push the menu off-screen */
+    .menuzord-brand img {
+        max-width: 160px !important;
+        height: auto !important;
+        margin-top: 0px !important;
+    }
+
+    /* 5. HEADER HEIGHT STABILITY
+       Prevents the header from collapsing into a thin line */
     .header-nav-wrapper {
-        padding-top: 0px !important;
-        padding-bottom: 0px !important;
+        min-height: 80px !important;
+        display: flex !important;
+        align-items: center !important;
     }
 }
