@@ -9030,19 +9030,19 @@ $grid-breakpoints: (
 
 
 /* ==========================================================================
-   MASTER RESPONSIVENESS & LAYOUT FIX (Final Version)
-   1. LOGICAL SCALING: Fixes "Zoomed In" look on Windows/Smartboards.
-   2. COMPACT HEADER: Transforms the menu bar into a centered, floating pill.
-   3. SLIM UI: Reduces button sizes and padding.
+   FINAL FIX: Shivam Gupta - ScaleBold
+   1. SCALING: 67% Zoom for Windows/Smartboards.
+   2. HEADER: Forces "Floating Pill" look (Centers & Rounds the Menu).
+   3. ICONS: Fixes Overlap on Mac/Windows.
    ========================================================================== */
 
-/* --- 1. GLOBAL SCALING FIX (The 67% Logic) --- */
+/* --- 1. LOGICAL SCREEN SCALING (The 67% Fix) --- */
 @media only screen and (min-width: 1025px) and (max-width: 1600px) {
     html {
-        zoom: 0.75; /* Forces the "MacBook" look on Windows */
+        zoom: 0.75; /* 75% Scale for cramped screens */
     }
     
-    /* Firefox fallback */
+    /* Firefox Support */
     @-moz-document url-prefix() {
         html {
             transform: scale(0.75);
@@ -9053,105 +9053,95 @@ $grid-breakpoints: (
     }
 }
 
-/* 4K Screen Protection */
+/* 4K Smartboard Protection */
 @media only screen and (min-width: 1921px) and (max-width: 3840px) and (orientation: landscape) {
     html {
         zoom: 0.85;
     }
 }
 
-/* Mac Retina Protection */
+/* Mac Retina Protection (Prevents tiny text on iMacs) */
 @media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 1400px) {
     html {
         zoom: 1; 
     }
 }
 
-/* ==========================================================================
-   HEADER CONTAINER: "The Floating Island" Look
-   Shrinks horizontal length and creates side margins.
-   ========================================================================== */
 
+/* --- 2. THE "FLOATING PILL" MENU (High Priority) --- */
 @media only screen and (min-width: 1025px) {
     
-    /* 1. TARGET THE MAIN MENU BAR CONTAINER */
-    header#header .header-nav-container,
+    /* Force the wrapper to detach from edges and become a pill */
     header#header .header-nav-wrapper,
-    .header-nav .menuzord-container {
-        /* Force Width Constraints */
-        width: auto !important;           /* Stop 100% stretch */
-        max-width: 1250px !important;     /* Cap the length (Adjust this to make it shorter/longer) */
+    header#header .header-nav-container,
+    .navbar-scrolltofixed, 
+    .is-sticky .header-nav-wrapper {
         
-        /* Center the "Island" */
-        margin-left: auto !important;
-        margin-right: auto !important;
+        /* Size & Position constraints */
+        width: 90% !important;           /* Responsive width (never full edge-to-edge) */
+        max-width: 1200px !important;    /* Cap the maximum length */
         left: 0 !important;
         right: 0 !important;
+        margin: 20px auto !important;    /* Center horizontally + Top gap */
         
-        /* Floating positioning */
-        position: relative !important;
-        margin-top: 20px !important;      /* Push down from very top edge */
+        /* Visuals */
+        background: #000000 !important;  /* Solid background for the pill */
+        border-radius: 50px !important;  /* Fully rounded ends */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important; /* Depth */
         
-        /* The "Pill" Shape */
-        border-radius: 50px !important;   /* Fully rounded corners for the bar itself */
-        overflow: hidden !important;      /* Clip content to rounded corners */
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important; /* Optional: Adds depth */
-    }
-
-    /* 2. FIX FOR STICKY HEADER (When scrolling)
-       Ensures it stays a "floating pill" even when scrolling down. */
-    .navbar-scrolltofixed.scroll-to-fixed-fixed {
-        width: 1250px !important;         /* Match max-width above */
-        max-width: 90% !important;        /* Safety for smaller laptop screens */
-        left: 0 !important;
-        right: 0 !important;
-        margin: 15px auto !important;     /* Keep floating gap */
-        border-radius: 50px !important;
+        /* Override theme's default positioning */
+        position: relative !important; 
         top: 0 !important;
     }
 
-    /* 3. REMOVE BACKGROUND FROM PARENT (Clean Look) 
-       Ensures the 'strip' behind the pill is transparent */
+    /* Fix for when you scroll down (Sticky State) */
+    .navbar-scrolltofixed.scroll-to-fixed-fixed {
+        position: fixed !important;
+        top: 10px !important;            /* Keep a small gap from top of screen */
+        margin-top: 0 !important;
+    }
+
+    /* Remove background from the full-width parent strip so it looks floating */
     header#header .header-nav {
         background: transparent !important;
         box-shadow: none !important;
+        border: none !important;
+    }
+    
+    /* Squeeze the internal menu spacing */
+    .menuzord-menu > li > a {
+        padding: 12px 15px !important;
     }
 }
 
-/* ==========================================================================
-   ELEMENT SIZING (Slimming Buttons & Text)
-   ========================================================================== */
 
-@media only screen and (min-width: 1025px) {
-    /* Slim down big buttons */
-    header .btn, 
-    header .elementor-button,
-    .menuzord-menu .btn,
-    header .theme-btn-style-one,
-    .header-nav-wrapper .btn {
-        padding: 10px 28px !important;
-        line-height: 1.4 !important;
-        font-size: 14px !important;
-        border-radius: 50px !important;
-        min-height: unset !important;
-    }
+/* --- 3. ICON SEPARATION FIX (No More Overlap) --- */
+/* We are creating a specific "Vertical Stack" for these icons */
 
-    /* Tighten Menu Items */
-    .menuzord-menu > li > a {
-        padding: 12px 15px !important;
-        font-size: 15px !important;
-    }
-    
-    /* Fix Logo Size */
-    .menuzord-brand img {
-        max-height: 45px !important;
-        width: auto !important;
-        margin-top: 5px !important; /* Vertically center if needed */
-    }
+/* A. Scroll To Top Arrow (Bottom Position) */
+.scroll-to-top a {
+    bottom: 30px !important;       /* Fixed distance from bottom */
+    right: 30px !important;        /* Fixed distance from right */
+    width: 45px !important;
+    height: 45px !important;
+    z-index: 99999 !important;
+}
 
-    /* Floating Contact Icon Placement */
-    .floating-contact-wrapper {
-        bottom: 40px !important; 
-        right: 30px !important;
-    }
+/* B. Floating Contact/Social Icons (Upper Position) */
+/* This pushes the contact icons UP by 80px so they sit ABOVE the scroll arrow */
+.floating-contact-wrapper {
+    bottom: 100px !important;      /* 30px (arrow) + 45px (height) + 25px (gap) */
+    right: 30px !important;        /* Aligned vertically with arrow */
+    z-index: 99998 !important;
+}
+
+/* C. Rounded Button Slimming (Inside Menu) */
+header .btn, 
+header .theme-btn-style-one,
+.menuzord-menu .btn {
+    padding: 10px 25px !important;
+    border-radius: 50px !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    min-height: auto !important;
 }
