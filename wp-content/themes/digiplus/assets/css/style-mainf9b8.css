@@ -9030,118 +9030,125 @@ $grid-breakpoints: (
 
 
 /* ==========================================================================
-   FINAL FIX: Shivam Gupta - ScaleBold
-   1. SCALING: 67% Zoom for Windows/Smartboards.
-   2. HEADER: Forces "Floating Pill" look (Centers & Rounds the Menu).
-   3. ICONS: Fixes Overlap on Mac/Windows.
+   FINAL POLISH: "Shrink-to-Fit" Menu & Aligned Icons
+   1. MENU: Uses 'fit-content' to wrap tightly around menu items (No extra width).
+   2. ICONS: Matches Scroll Button size (40px) and alignment (30px right) perfectly.
    ========================================================================== */
 
-/* --- 1. LOGICAL SCREEN SCALING (The 67% Fix) --- */
+/* --- 1. GLOBAL SCALING (Keep this for Windows/Smartboard) --- */
 @media only screen and (min-width: 1025px) and (max-width: 1600px) {
-    html {
-        zoom: 0.75; /* 75% Scale for cramped screens */
-    }
-    
-    /* Firefox Support */
-    @-moz-document url-prefix() {
-        html {
-            transform: scale(0.75);
-            transform-origin: 0 0;
-            width: 133.33%;
-            overflow-x: hidden;
-        }
-    }
+    html { zoom: 0.75; }
+    @-moz-document url-prefix() { html { transform: scale(0.75); transform-origin: 0 0; width: 133.33%; overflow-x: hidden; } }
 }
-
-/* 4K Smartboard Protection */
 @media only screen and (min-width: 1921px) and (max-width: 3840px) and (orientation: landscape) {
-    html {
-        zoom: 0.85;
-    }
+    html { zoom: 0.85; }
 }
-
-/* Mac Retina Protection (Prevents tiny text on iMacs) */
 @media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 1400px) {
-    html {
-        zoom: 1; 
-    }
+    html { zoom: 1; }
 }
 
-
-/* --- 2. THE "FLOATING PILL" MENU (High Priority) --- */
+/* --- 2. THE "SHRINK-TO-FIT" PILL MENU --- */
 @media only screen and (min-width: 1025px) {
     
-    /* Force the wrapper to detach from edges and become a pill */
+    /* Target the bar and force it to shrink */
     header#header .header-nav-wrapper,
     header#header .header-nav-container,
-    .navbar-scrolltofixed, 
-    .is-sticky .header-nav-wrapper {
+    .navbar-scrolltofixed {
+        /* This magic property shrinks width to fit content */
+        width: -moz-fit-content !important;
+        width: fit-content !important;
         
-        /* Size & Position constraints */
-        width: 90% !important;           /* Responsive width (never full edge-to-edge) */
-        max-width: 1200px !important;    /* Cap the maximum length */
+        /* Safety cap so it never touches edges on small laptops */
+        max-width: 95% !important; 
+        
+        /* Center the pill */
+        margin-left: auto !important;
+        margin-right: auto !important;
         left: 0 !important;
         right: 0 !important;
-        margin: 20px auto !important;    /* Center horizontally + Top gap */
         
         /* Visuals */
-        background: #000000 !important;  /* Solid background for the pill */
-        border-radius: 50px !important;  /* Fully rounded ends */
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important; /* Depth */
-        
-        /* Override theme's default positioning */
-        position: relative !important; 
+        margin-top: 20px !important;
+        background: #ffffff !important; /* White pill as per screenshot */
+        border-radius: 50px !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+        position: relative !important;
         top: 0 !important;
     }
 
-    /* Fix for when you scroll down (Sticky State) */
+    /* Sticky State Fix */
     .navbar-scrolltofixed.scroll-to-fixed-fixed {
         position: fixed !important;
-        top: 10px !important;            /* Keep a small gap from top of screen */
+        top: 10px !important;
         margin-top: 0 !important;
     }
 
-    /* Remove background from the full-width parent strip so it looks floating */
+    /* Remove background from the strip behind it */
     header#header .header-nav {
         background: transparent !important;
         box-shadow: none !important;
         border: none !important;
     }
     
-    /* Squeeze the internal menu spacing */
+    /* Tighter spacing inside the menu to help it shrink */
     .menuzord-menu > li > a {
-        padding: 12px 15px !important;
+        padding: 10px 12px !important;
+        font-size: 15px !important;
+    }
+    
+    /* Slim rounded buttons inside menu */
+    header .btn, header .theme-btn-style-one {
+        padding: 8px 24px !important;
+        font-size: 13px !important;
+        border-radius: 50px !important;
     }
 }
 
+/* --- 3. PERFECT ICON ALIGNMENT & SIZING --- */
 
-/* --- 3. ICON SEPARATION FIX (No More Overlap) --- */
-/* We are creating a specific "Vertical Stack" for these icons */
-
-/* A. Scroll To Top Arrow (Bottom Position) */
-.scroll-to-top a {
-    bottom: 30px !important;       /* Fixed distance from bottom */
-    right: 30px !important;        /* Fixed distance from right */
-    width: 45px !important;
-    height: 45px !important;
-    z-index: 99999 !important;
-}
-
-/* B. Floating Contact/Social Icons (Upper Position) */
-/* This pushes the contact icons UP by 80px so they sit ABOVE the scroll arrow */
+/* A. Floating Wrapper (Yellow Icons) */
+/* Force it to stick to the exact same Right coordinate */
 .floating-contact-wrapper {
-    bottom: 100px !important;      /* 30px (arrow) + 45px (height) + 25px (gap) */
-    right: 30px !important;        /* Aligned vertically with arrow */
+    position: fixed !important;
+    right: 30px !important;   /* EXACT ALIGNMENT */
+    bottom: 85px !important;  /* Pushed up to make room for scroll button */
     z-index: 99998 !important;
+    align-items: center !important;
+    display: flex !important;
+    flex-direction: column !important;
 }
 
-/* C. Rounded Button Slimming (Inside Menu) */
-header .btn, 
-header .theme-btn-style-one,
-.menuzord-menu .btn {
-    padding: 10px 25px !important;
-    border-radius: 50px !important;
-    font-size: 14px !important;
-    line-height: 1.4 !important;
-    min-height: auto !important;
+/* B. Scroll To Top Button (Black Arrow) */
+.scroll-to-top {
+    display: block !important; /* Ensure it's visible */
+}
+
+.scroll-to-top a {
+    position: fixed !important;
+    right: 30px !important;   /* EXACT ALIGNMENT with wrapper above */
+    bottom: 30px !important;
+    
+    /* RE-SIZING to match your yellow icons (40px) */
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    
+    /* Coloring (Dark Navy/Black to match screenshot) */
+    background: #13132f !important;
+    opacity: 1 !important;
+    z-index: 99999 !important;
+    
+    /* Centering the arrow icon */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+}
+
+/* Fix Arrow Icon Size inside the button */
+.scroll-to-top a i {
+    font-size: 14px !important; /* Smaller arrow */
+    line-height: 40px !important;
+    margin: 0 !important;
 }
