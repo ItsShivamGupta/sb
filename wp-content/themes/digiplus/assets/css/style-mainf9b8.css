@@ -9031,38 +9031,61 @@ $grid-breakpoints: (
 
 
 /* ===========================================================
-   FORCE ZOOM FIX (By Gemini for Shivam Gupta)
-   Target: Windows Laptops (13.3", 14", 15.6") & Smartboards
+   FINAL RESPONSIVENESS FIX (Safe for Menubar)
+   Target: Windows Laptops (1280px-1440px Viewports)
    =========================================================== */
 
-@media only screen and (min-width: 1000px) and (max-width: 1600px) {
-    body {
-        /* This tells Chrome/Edge on Windows to literally zoom out to 80%.
-           If 80% isn't enough, change this value to 0.75 or 0.67 */
-        zoom: 0.8 !important; 
-        
-        /* Ensure the background covers the whole area after zooming */
-        min-height: 100vh;
-        width: 100%;
-        overflow-x: hidden; /* Prevents side-scrolling */
+@media only screen and (min-width: 1025px) and (max-width: 1480px) {
+    
+    /* 1. SHRINK ALL TEXT & SPACING
+       Reducing the root size scales down all 'rem' values in your theme */
+    html {
+        font-size: 13px !important; /* Default is usually 16px. This acts like 80% zoom */
     }
-}
 
-/* Correction for Fixed Header when Zoom is active 
-   (Sticky headers sometimes misbehave with CSS zoom) */
-@media only screen and (min-width: 1000px) and (max-width: 1600px) {
-    header#header, 
-    .header-nav,
-    .floating-contact-wrapper, 
-    .scroll-to-top {
-        /* Ensures fixed elements stay pinned to the correct spot */
-        transform: translateZ(0); 
-    }
-}
-
-/* Specific adjustment for the 13.3" screen if it feels too small */
-@media only screen and (min-width: 1000px) and (max-width: 1300px) {
+    /* 2. FORCE WIDER CONTAINERS
+       The standard 1170px container is too tight for these screens.
+       We force it to 95% width so content breathes (like zooming out). */
     .container {
-        max-width: 95% !important; /* Force full width usage */
+        max-width: 96% !important;
+        width: 96% !important;
+        padding-left: 15px;
+        padding-right: 15px;
     }
+
+    /* 3. COMPACT MENU (Prevents dropping to new line) */
+    .menuzord-brand img {
+        max-width: 140px !important; /* Shrink logo slightly */
+        height: auto !important;
+    }
+    
+    .menuzord-menu > li > a {
+        padding: 15px 10px !important; /* Reduce side padding on menu links */
+        font-size: 0.9rem !important;
+    }
+
+    /* 4. FIX HERO/SLIDER HEIGHTS
+       Prevent the top banner from taking up the whole laptop screen */
+    .tm-page-title, 
+    .tm-sc-section-title {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+    
+    h1, .h1 { font-size: 2.8rem !important; }
+    h2, .h2 { font-size: 2.2rem !important; }
+    
+    /* 5. ADJUST PADDING FOR SECTIONS */
+    /* Shrinks white space between sections */
+    body .main-content-area, 
+    body .sidebar-area {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+    }
+}
+
+/* Specific Fix for the 4K Smartboard (Android TV usually has high scaling) */
+@media only screen and (min-width: 1921px) and (min-resolution: 2dppx) {
+    html { font-size: 14px !important; }
+    .container { max-width: 90% !important; }
 }
