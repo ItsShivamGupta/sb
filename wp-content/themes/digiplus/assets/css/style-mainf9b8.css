@@ -9030,49 +9030,49 @@ $grid-breakpoints: (
 
 
 /* ===========================================================
-   RESPONSIVENESS PATCH (FIXED MENU VERSION)
-   Based on your request: Shrinks layout like 67% zoom, 
-   BUT keeps the menu visible and readable.
+   RESPONSIVENESS PATCH (By Gemini for Shivam Gupta)
+   Fixes: Windows Laptop (150% Scale) & Smartboard (300% Scale)
    =========================================================== */
 
+/* 1. SIMULATE 67% ZOOM ON LAPTOPS/SMARTBOARDS
+   Target screens between 1024px and 1440px (Common "Cramped" Range) */
 @media only screen and (min-width: 1025px) and (max-width: 1480px) {
     
-    /* 1. SIMULATE 67% ZOOM (The part you liked)
-       This shrinks all images, sections, and body text. */
     html {
+        /* Reduces all REM-based sizes to 85% of their original size.
+           This shrinks fonts, padding, and margins proportionally. */
         font-size: 85% !important; 
     }
 
-    /* 2. CONTAINER WIDTH 
-       Gives breathing room on the sides. */
+    /* 2. PREVENT HORIZONTAL SCROLLING & TIGHT EDGES */
     .container {
-        max-width: 94% !important; 
-        width: 94% !important;
+        /* Force container to leave breathing room on sides */
+        max-width: 92% !important; 
+        width: 92% !important;
     }
 
-    /* 3. THE MENU BAR FIX (The Correction)
-       In the first code, I used '0.9rem' which made the menu tiny.
-       Here, we force '15px'. Pixels do NOT shrink with the html scaling,
-       so the menu stays big and visible while the site shrinks. */
+    /* 3. FIX HEADER/MENU OVERLAPPING
+       Prevents the menu from dropping to a second line or overlapping the logo */
     .menuzord-menu > li > a {
-        font-size: 15px !important;     /* Force readable size */
-        font-weight: 600 !important;    /* Ensure visibility */
-        white-space: nowrap !important; /* Prevent wrapping */
+        padding: 10px 10px !important; /* Reduce space between menu items */
+        font-size: 0.9rem !important;  /* Slightly smaller menu text */
     }
     
-    /* Ensure the logo scales proportionally with the menu */
     .menuzord-brand img {
-        max-width: 160px !important;
-        height: auto !important;
+        /* Scale down the logo slightly to save space */
+        max-width: 130px !important; 
+        width: auto !important;
     }
-}
 
-/* 4. SMARTBOARD 4K FIX (Keep this if your board uses high DPI) */
+ 
+
+/* 4. SPECIFIC FIX FOR 4K SMARTBOARDS (High DPI) 
+   If the board reports a very high resolution but high pixel density */
 @media only screen and (min-width: 1921px) and (max-width: 3840px) and (min-resolution: 2dppx) {
     html {
-        font-size: 100% !important; 
+        font-size: 100% !important; /* Reset to standard */
     }
     .container {
-        max-width: 1600px !important; 
+        max-width: 1600px !important; /* Allow wider layout on true 4K */
     }
 }
