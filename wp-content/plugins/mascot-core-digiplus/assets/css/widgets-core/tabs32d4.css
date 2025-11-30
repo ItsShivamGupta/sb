@@ -1,0 +1,149 @@
+/*
+ * Shortcode: Tabs.scss
+ * -----------------------------------------------
+*/
+.tm-tabs-horizontal-nav .nav-tabs {
+  border-bottom: 0;
+}
+.tm-tabs-horizontal-nav .nav-tabs .nav-link {
+  position: relative;
+  color: var(--theme-color1);
+  padding: 14px 30px 11px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  letter-spacing: 0.07em;
+  font-size: 0.9rem;
+  border-radius: 7px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 0;
+  display: block;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.tm-tabs-horizontal-nav .nav-tabs .nav-link:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--theme-color1);
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+.tm-tabs-horizontal-nav .nav-tabs .nav-link .tabs-icon {
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+.tm-tabs-horizontal-nav .nav-tabs .nav-link .tabs-title {
+  transition: all 0.3s ease;
+}
+.tm-tabs-horizontal-nav .nav-tabs .nav-link.active, .tm-tabs-horizontal-nav .nav-tabs .nav-link:hover {
+  color: #fff;
+  background-color: transparent;
+}
+.tm-tabs-horizontal-nav .nav-tabs .nav-link.active:before, .tm-tabs-horizontal-nav .nav-tabs .nav-link:hover:before {
+  height: 100%;
+}
+.tm-tabs-horizontal-nav .tab-content {
+  position: relative;
+}
+
+@media (max-width: 991.98px) {
+  .tm-tabs-vertical-nav .col-nav-tabs {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+@media (max-width: 991.98px) {
+  .tm-tabs-vertical-nav .col-content {
+    width: 100%;
+  }
+}
+.tm-tabs-vertical-nav .nav-tabs {
+  border-bottom: 0;
+}
+.tm-tabs-vertical-nav .nav-tabs li .nav-link {
+  color: #0c0c0c;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 20px 70px 0 rgba(17, 17, 37, 0.11);
+  border-style: solid;
+  border-width: 0;
+  border-radius: 0;
+  display: block;
+  position: relative;
+  line-height: 2.5rem;
+  margin: 0 0 5px 0;
+  padding: 10px 10px 10px 30px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.tm-tabs-vertical-nav .nav-tabs li .nav-link .tabs-icon {
+  color: var(--theme-color1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+.tm-tabs-vertical-nav .nav-tabs li .nav-link .tabs-title {
+  transition: all 0.3s ease;
+}
+.tm-tabs-vertical-nav .nav-tabs li .nav-link a {
+  transition: all 0.3s ease;
+}
+.tm-tabs-vertical-nav .nav-tabs li .nav-link.active, .tm-tabs-vertical-nav .nav-tabs li .nav-link:hover {
+  background-color: #fff;
+  border-style: solid;
+  border-width: 0 0 0 5px;
+  border-color: var(--theme-color1);
+  box-shadow: 0 0 10px 0 rgba(19, 21, 41, 0.12);
+}
+.tm-tabs-vertical-nav .nav-tabs li .nav-link.active:before, .tm-tabs-vertical-nav .nav-tabs li .nav-link:hover:before {
+  height: 100%;
+}
+.tm-tabs-vertical-nav .tab-content {
+  position: relative;
+}
+.tm-tabs-vertical-nav .tab-content .tab-pane .tab-content-inner {
+  transform: translateX(30px);
+  transition: 0.5s all ease-in-out;
+}
+.tm-tabs-vertical-nav .tab-content .tab-pane.active .tab-content-inner {
+  transform: translateX(0);
+}
+.tm-tabs-vertical-nav.skin-left-nav-classic .nav-tabs li .nav-link {
+  color: #fff;
+  background-color: transparent;
+  border-style: solid;
+  border-width: 0;
+  box-shadow: none;
+  padding: 0;
+  font-size: 24px;
+}
+.tm-tabs-vertical-nav.skin-left-nav-classic .nav-tabs li .nav-link .tabs-icon {
+  font-size: 11px;
+  color: #fff;
+  background-color: transparent;
+  left: 0;
+  margin: 0 0 0 -8px;
+  opacity: 0;
+}
+.tm-tabs-vertical-nav.skin-left-nav-classic .nav-tabs li .nav-link.active, .tm-tabs-vertical-nav.skin-left-nav-classic .nav-tabs li .nav-link:hover {
+  padding: 0 0 0 30px;
+}
+.tm-tabs-vertical-nav.skin-left-nav-classic .nav-tabs li .nav-link.active .tabs-icon, .tm-tabs-vertical-nav.skin-left-nav-classic .nav-tabs li .nav-link:hover .tabs-icon {
+  margin: 0;
+  opacity: 1;
+}

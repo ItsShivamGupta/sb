@@ -1,0 +1,71 @@
+.tm-sc-simple-nav-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tm-sc-simple-nav-menu ul li {
+  list-style: none;
+  transition: all 0.3s ease;
+}
+.tm-sc-simple-nav-menu ul li a {
+  display: block;
+  position: relative;
+  padding-bottom: 0;
+  padding-top: 0;
+  padding-left: 18px;
+  margin-bottom: 0;
+  line-height: 2.5rem;
+  transition: all 0.3s ease;
+  color: #777;
+  overflow: hidden;
+}
+.tm-sc-simple-nav-menu ul li a:hover {
+  color: #aaa;
+}
+.tm-sc-simple-nav-menu ul li .tm-nav-arrow-icon {
+  color: var(--theme-color1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+.tm-sc-simple-nav-menu ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tm-sc-simple-nav-menu ul.split-nav-menu li {
+  margin-bottom: 4px !important;
+  width: 50%;
+  float: left;
+  padding-right: 3px;
+}
+.tm-sc-simple-nav-menu .tm-animate-hover.icon-rotate li:hover i {
+  transform: translateY(-50%) rotate(360deg);
+}
+.tm-sc-simple-nav-menu .tm-animate-hover.icon-rotate-x li:hover i {
+  transform: translateY(-50%) rotateX(360deg);
+}
+.tm-sc-simple-nav-menu .tm-animate-hover.icon-rotate-y li:hover i {
+  transform: translateY(-50%) rotateY(180deg);
+}
+.tm-sc-simple-nav-menu .tm-animate-hover.icon-translate li:hover i {
+  transform: translate(-10px, -45%);
+}
+.tm-sc-simple-nav-menu .tm-animate-hover.icon-translate-x li:hover i {
+  transform: translateY(-50%) translateX(-7px);
+}
+.tm-sc-simple-nav-menu .tm-animate-hover.icon-translate-x-right li:hover i {
+  transform: translateY(-50%) translateX(7px);
+}
+.tm-sc-simple-nav-menu .tm-animate-hover.icon-translate-y li:hover i {
+  transform: translateY(-45%);
+}
+.tm-sc-simple-nav-menu .tm-animate-hover.icon-scale li:hover i {
+  transform: translateY(-50%) scale(1.1);
+}

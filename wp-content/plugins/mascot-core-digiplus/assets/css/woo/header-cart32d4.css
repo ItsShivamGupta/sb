@@ -1,0 +1,21 @@
+.elementor-widget-tm-ele-header-cart.hide-cart-count-yes .mini-cart-icon .cart-quick-info {
+  display: none;
+}
+.elementor-widget-tm-ele-header-cart.hide-cart-price-yes .mini-cart-icon .cart-quick-info .amount {
+  display: none;
+}
+.elementor-widget-tm-ele-header-cart.hide-cart-mini-count-yes .mini-cart-icon .items-count {
+  display: none;
+}
+.elementor-widget-tm-ele-header-cart.hide-cart-dropdown-yes .dropdown-content {
+  display: none;
+}
+.elementor-widget-tm-ele-header-cart.tm-header-search-content-style-side-panel .dropdown-content, .elementor-widget-tm-ele-header-cart.tm-header-search-content-style-no-dropdown .dropdown-content {
+  display: none;
+}
+.elementor-widget-tm-ele-header-cart .top-nav-mini-cart-icon-container .top-nav-mini-cart-icon-contents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}

@@ -1,0 +1,122 @@
+.tm-sc-projects .cat-list {
+  list-style: none;
+  margin: 0;
+}
+.tm-sc-projects .cat-list li {
+  display: inline;
+  color: #aaa;
+  margin-right: 7px;
+  font-size: 13px;
+}
+.tm-sc-projects .cat-list li a {
+  color: #aaa;
+  text-transform: capitalize;
+  transition: all 0.3s ease-in-out;
+}
+.tm-sc-projects .cat-list li:last-child span {
+  display: none;
+}
+
+.projects-current-theme2 {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  border-radius: 6px;
+  width: 25%;
+  height: 528px;
+  transition: all 700ms ease;
+}
+.projects-current-theme2 .projects-featured-img {
+  width: 100%;
+  height: 100%;
+}
+.projects-current-theme2 .projects-featured-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  transition: all 300ms ease;
+}
+.projects-current-theme2 .btn-view-details {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  border-radius: 50%;
+  background-color: var(--theme-color1);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 300ms ease;
+}
+.projects-current-theme2 .btn-view-details:hover a {
+  top: 0;
+}
+.projects-current-theme2 .btn-view-details a {
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: var(--theme-color-white);
+  color: var(--theme-color1);
+  font-size: 30px;
+  position: absolute;
+  top: -5px;
+  border: 1px solid var(--theme-color1);
+  transition: all 300ms ease;
+}
+.projects-current-theme2.active {
+  width: 47%;
+}
+.projects-current-theme2.active .btn-view-details {
+  top: 50%;
+  visibility: visible;
+  opacity: 1;
+}
+.projects-current-theme2.active .service-featured-img img {
+  filter: grayscale(100%);
+}
+@media (max-width: 991.98px) {
+  .projects-current-theme2 {
+    height: 500px;
+    width: 100% !important;
+  }
+}
+@media (max-width: 575.98px) {
+  .projects-current-theme2 {
+    height: 400px;
+  }
+}
+.projects-current-theme2 .btn-circle-arrow:hover:after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+.projects-current-theme2 .btn-circle-arrow:after {
+  position: absolute;
+  content: "\e02a";
+  left: 50%;
+  font-size: 34px;
+  top: 50%;
+  font-weight: normal;
+  font-family: "linearicons-free";
+  transform: translate(-50%, -50%) rotate(-45deg);
+  border-radius: 50%;
+  text-align: center;
+  z-index: 9;
+  color: var(--theme-color1);
+  transition: all 300ms ease;
+}
+
+.project-block-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+@media (max-width: 991.98px) {
+  .project-block-wrapper {
+    flex-wrap: wrap;
+  }
+}
