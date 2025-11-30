@@ -1,0 +1,236 @@
+/* ---------- Responsive, performant Preloader CSS ---------- */
+
+/* Root preloader */
+#pre-load {
+  background: #000616;
+  position: fixed;
+  inset: 0;
+  /* top:0; right:0; bottom:0; left:0; */
+  z-index: 999999;
+  transition: opacity 1s ease;
+  opacity: 1;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Centered container: size scales with viewport, capped for large screens */
+.loader-inner {
+  --ripple-gradient: linear-gradient(0deg, rgba(33, 12, 0, 0.18) 0%, rgba(135, 72, 0, 0.18) 100%);
+
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: min(55vmin, 420px);
+  /* scales on viewport, caps at 420px */
+  height: auto;
+  aspect-ratio: 1 / 1;
+  /* keeps perfect circle container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  /* prevents accidental interaction */
+  will-change: transform, opacity;
+}
+
+/* ---------- Ripple rings (performance-friendly) ---------- */
+.loader-inner .box {
+  position: absolute;
+  background: var(--ripple-gradient);
+  border-radius: 50%;
+  border-top: 1px solid rgba(100, 100, 100, 0.45);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+  /* only use heavy blur on capable devices */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: ripple 1500ms ease-in-out infinite;
+  will-change: transform, box-shadow, opacity;
+}
+
+/* use proportional sizes inside the container (keeps layout stable) */
+.loader-inner .box:nth-child(1) {
+  width: 28%;
+  aspect-ratio: 1 / 1;
+  z-index: 99;
+}
+
+.loader-inner .box:nth-child(2) {
+  inset: 26%;
+  z-index: 98;
+  border-color: rgba(100, 100, 100, 0.7);
+  animation-delay: 120ms;
+}
+
+.loader-inner .box:nth-child(3) {
+  inset: 18%;
+  z-index: 97;
+  border-color: rgba(100, 100, 100, 0.55);
+  animation-delay: 240ms;
+}
+
+.loader-inner .box:nth-child(4) {
+  inset: 10%;
+  z-index: 96;
+  border-color: rgba(100, 100, 100, 0.38);
+  animation-delay: 360ms;
+}
+
+.loader-inner .box:nth-child(5) {
+  inset: 0;
+  z-index: 95;
+  border-color: rgba(100, 100, 100, 0.2);
+  animation-delay: 480ms;
+}
+
+/* ---------- Center logo (scales with container) ---------- */
+.loader-logo {
+  position: absolute;
+  width: min(22vmin, 120px);
+  /* responsive logo size */
+  height: auto;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  pointer-events: auto;
+  /* allow clicks if needed */
+  animation: logo-breathe 1500ms ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+.loader-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* ---------- Brand near bottom (responsive, not huge) ---------- */
+.loader-brand {
+  position: absolute;
+  bottom: clamp(10px, 3.5vh, 28px);
+  /* responsive distance from bottom */
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  font-size: clamp(14px, 3.6vw, 40px);
+  /* scales: small devices -> 14px, large -> 40px */
+  color: #ffffff;
+  font-weight: 700;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  text-align: center;
+  letter-spacing: 0.2px;
+  pointer-events: none;
+  text-rendering: optimizeLegibility;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- Animations ---------- */
+@keyframes ripple {
+  0% {
+    transform: scale(1) translateZ(0);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.18) translateZ(0);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.28);
+    opacity: 0.95;
+  }
+
+  100% {
+    transform: scale(1) translateZ(0);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+    opacity: 1;
+  }
+}
+
+@keyframes logo-breathe {
+  0% {
+    opacity: 0.9;
+    transform: translateY(0) translateZ(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-2%) translateZ(0);
+  }
+
+  /* tiny smooth lift */
+  100% {
+    opacity: 0.9;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+/* ---------- Accessibility: respect reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+
+  .loader-inner .box,
+  .loader-logo {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---------- Mobile & low-power devices: reduce heavy effects ---------- */
+@media (max-width: 600px),
+(max-height: 500px) {
+  .loader-inner {
+    width: min(70vmin, 300px);
+    /* slightly smaller on small screens */
+  }
+
+  .loader-inner .box {
+    backdrop-filter: none;
+    /* blur is expensive on mobile */
+    -webkit-backdrop-filter: none;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    animation-duration: 1350ms;
+  }
+
+  .loader-logo {
+    width: min(20vmin, 92px);
+    animation-duration: 1350ms;
+  }
+
+  .loader-brand {
+    font-size: clamp(12px, 4.5vw, 28px);
+    bottom: 8px;
+  }
+}
+
+/* ---------- Very large displays: scale up a bit gracefully ---------- */
+@media (min-width: 1600px) {
+  .loader-inner {
+    width: min(55vmin, 520px);
+  }
+
+  .loader-logo {
+    width: min(18vmin, 160px);
+  }
+
+  .loader-brand {
+    font-size: clamp(20px, 2.4vw, 72px);
+  }
+}
+
+/* ---------- Minor performance hint: avoid layout thrash ---------- */
+.loader-inner,
+.loader-inner .box,
+.loader-logo {
+  backface-visibility: hidden;
+  transform-origin: center center;
+}
+
+/* ---------- Optional: fade-out helper class used by JS to remove preloader ---------- */
+#pre-load.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 700ms ease;
+}
