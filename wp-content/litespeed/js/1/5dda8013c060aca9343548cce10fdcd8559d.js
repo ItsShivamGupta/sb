@@ -1,3 +1,0 @@
-(function($){'use strict';var WidgetServiceBlock2Handler=function($scope){var $items=$('.features-block-style18 .inner-box');if($items.length>1){$items.eq(1).addClass('active')}else{$items.first().addClass('active')}
-$items.hover(function(){$items.removeClass('active');$(this).addClass('active')})};$(window).on("elementor/frontend/init",function(){elementorFrontend.hooks.addAction("frontend/element_ready/tm-ele-features-block.skin-style18",WidgetServiceBlock2Handler)})})(jQuery)
-;
